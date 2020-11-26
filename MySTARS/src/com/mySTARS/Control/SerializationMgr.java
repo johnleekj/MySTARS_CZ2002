@@ -18,13 +18,17 @@ import com.mySTARS.Entities.StaffAccount;
 import com.mySTARS.Entities.StudentAccount;
 import com.mySTARS.Entities.StudentInformation;
 import com.mySTARS.Entities.SystemBackend;
-
+/**
+ * Serialization manager to handle serialization and deserialization of data
+ * @author user
+ *
+ */
 public class SerializationMgr {
 
 	public static void main(String[] args) {
 		
-		/**
-    	* @param Code beneath is for loading of data
+		/*
+    	* Code beneath is for loading of data
     	*/
 //		SystemBackend.uploadStaffData();
 //		SystemBackend.uploadStudentData();
@@ -34,21 +38,25 @@ public class SerializationMgr {
 //		serializeMap((HashMap)SystemBackend.CourseMap, "courseData.mystars");
 	}
 	
-	
+	/**
+	 * Serialization of data from hashmaps into filenames
+	 * @param mapsave hashmap to be serialized
+	 * @param filename name of serialized file
+	 */
 	public static void serializeMap(HashMap mapsave, String filename) {
-		/**
-    	* @param Serialization done here
+		/*
+    	* Serialization done here
     	*/
         try
         {    
-        	/**
-        	* @param Saving object in a file
+        	/*
+        	* Saving object in a file
         	*/
             FileOutputStream file = new FileOutputStream(filename, false); 
             ObjectOutputStream out = new ObjectOutputStream(file); 
  
-            /**
-        	* @param Method for Serialization of object
+            /*
+        	* Method for Serialization of object
         	*/
             out.writeObject(mapsave); 
             
@@ -64,10 +72,14 @@ public class SerializationMgr {
             System.out.println("IOException is caught"); 
         }
 	}
-	
+	/**
+	 * Serialization of data from hashmaps into filenames
+	 * @param mapsave hashmap to be de-serialized
+	 * @param filename name of de-serialized file
+	 */
 	public static HashMap deserializeMap(String filename) {
-		/**
-    	* @param De-serialization done here
+		/*
+    	* De-serialization done here
     	*/
         HashMap<Integer, String> map = null;
         try
@@ -86,16 +98,7 @@ public class SerializationMgr {
            c.printStackTrace();
         }
         System.out.println("Deserialized HashMap..");
-        /**
-    	* @param You can display the content using the iterator - the code below
-    	*/
-//        Set set = map.entrySet();
-//        Iterator iterator = set.iterator();
-//        while(iterator.hasNext()) {
-//           Map.Entry mentry = (Map.Entry)iterator.next();
-//           System.out.print("key: "+ mentry.getKey() + " & Value: ");
-//           System.out.println(mentry.getValue());
-//        }
+        
 		return map;
 	}
 }

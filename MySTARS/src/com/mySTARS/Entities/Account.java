@@ -4,13 +4,15 @@ import java.io.Serializable;
 
 import com.mySTARS.ENUMS.DOMAIN;
 
+
+/**
+ * 
+ * Account class to define as a parent class for the child classes to inherit from.
+ * See: StudentAccount, StaffAcount
+ */
+
 public class Account implements Serializable  {
 
-	/**
-	 * 
-	 * Account class to define a parent class of the child classes to inherit from.
-	 * See: StudentAccount.java, StaffAcount
-	 */
 	
 	private static final long serialVersionUID = -5867458402425868826L;
 	private String loginID;

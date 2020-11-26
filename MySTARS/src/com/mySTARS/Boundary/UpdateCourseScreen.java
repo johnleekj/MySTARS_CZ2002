@@ -134,13 +134,15 @@ public class UpdateCourseScreen {
 					*/
 					if(SystemBackend.ifIndexClash(currentCourseCode, indexNumber)) {
 						DAY day = GenericBoundary.readDay();
-						String type = GenericBoundary.readStringInputUPPER("Enter Lesson type: ");
+						String type = GenericBoundary.readStringInputUPPER("Enter Lesson type (e.g.Lec/tut/lab): ");
+						String groupname = GenericBoundary.readStringInputUPPER("Enter course group (e.g.CS2): ");
 						String location = GenericBoundary.readStringInputUPPER("Enter lesson location: ");
 						WEEK lessonWeeks = GenericBoundary.readWeek();
 						String remarks =  GenericBoundary.readStringInputCaseSensitive("Enter lesson remarks: ");
-						String startTime = GenericBoundary.readStringInputCaseSensitive("Enter start time(24hr clock): ");
-						String endTime = GenericBoundary.readStringInputCaseSensitive("Enter end time(24hr clock): ");
-						UpdateCourseMgr.addLessonToIndex(currentCourseCode, indexNumber, day, endTime, endTime, endTime, lessonWeeks, endTime, endTime, endTime);			
+						String startTime = GenericBoundary.readStringInputCaseSensitive("Enter start time(24hr clock e.g.0900): ");
+						String endTime = GenericBoundary.readStringInputCaseSensitive("Enter end time(24hr clock e.g.0900): ");
+						UpdateCourseMgr.addLessonToIndex(currentCourseCode, indexNumber,
+								day, type, groupname, location, lessonWeeks, remarks, startTime, endTime);			
 					}
 					break;
 				case 7:

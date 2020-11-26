@@ -11,10 +11,6 @@ public class EncryptionMgr {
 	/**
 	* @param This EncryptionMgr class is what is used to mask the passwords that user inputs
 	*/
-	public static void main(String[] args) {
-		System.out.println(hashPassword("hi"));
-		passwordMask();
-	}
 	
 	public static String hashPassword(String inputPassword) {
 		

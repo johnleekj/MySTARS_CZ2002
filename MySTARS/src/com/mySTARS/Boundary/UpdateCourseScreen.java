@@ -85,8 +85,8 @@ public class UpdateCourseScreen {
 					indexNumber = GenericBoundary.readPositiveIntInputFromUser("Enter index number of course that you wish to change: ");
 					if(SystemBackend.ifIndexClash(currentCourseCode, indexNumber)) {
 						DAY day = GenericBoundary.readDay();
-						String type = GenericBoundary.readStringInputUPPER("Enter Lesson type: ");
-						String location = GenericBoundary.readStringInputUPPER("Enter lesson location: ");
+						String type = GenericBoundary.readStringInputUPPER("Enter Lesson type(lab, tut, lec): ");
+						String location = GenericBoundary.readStringInputUPPER("Enter lesson location(SCSE, EEE...): ");
 						WEEK lessonWeeks = GenericBoundary.readWeek();
 						String remarks =  GenericBoundary.readStringInputCaseSensitive("Enter lesson remarks: ");
 						String startTime = GenericBoundary.readStringInputCaseSensitive("Enter start time(24hr clock): ");

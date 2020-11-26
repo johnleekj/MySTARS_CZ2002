@@ -90,7 +90,7 @@ public class GenericBoundary {
 		
 		DAY queryDay = null;
 		do {
-			System.out.print("Please enter day: ");
+			System.out.print("Please enter day (mon, tue, ..): ");
 			String school = scanner.nextLine().trim();
 			
 			for (DAY currentEnum : DAY.values()) {

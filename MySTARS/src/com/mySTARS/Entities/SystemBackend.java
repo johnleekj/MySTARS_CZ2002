@@ -22,7 +22,11 @@ import com.mySTARS.ENUMS.SCHOOL;
 import com.mySTARS.ENUMS.WEEK;
 import com.mySTARS.ENUMS.DAY;
 
-
+/**
+ * Holds the data in the backend of the system
+ * @author user
+ *
+ */
 public class SystemBackend {
 
 	// Format : "yyyy.MM.dd G 'at' HH:mm:ss"
@@ -40,7 +44,9 @@ public class SystemBackend {
 	// Key, Object : courseCode, Course
 	public static Map<String, Course> CourseMap = new HashMap<>();
 	
-
+	/**
+	 * uploads staff data into a hashmap
+	 */
 	public static void uploadStaffData() {
 		//		LOGIN_ID, HASH_PASSWORD, EMAIL, STAFF_ID, NAME, GENDER, NATIONALITY
 		//		BOB_ADMIN, Admin@CSC, bob@e.ntu.edu.sg, S001, BOB, M, SINGAPOREAN
@@ -60,7 +66,9 @@ public class SystemBackend {
 		StaffAccountMap.put(admin_account.getLoginID(), admin_account);
 		
 	}
-	
+	/**
+	 * Upload student data into a hashmap
+	 */
 	public static void uploadStudentData() {
 		//		LOGIN_ID, HASH_PASSWORD, EMAIL, STAFF_ID, NAME, GENDER, NATIONALITY
 		//		JORGE_NTU, apple123, JORGE01A@E.NTU.EDU.SG, U001, JORGE, M, SINGAPOREAN
@@ -167,7 +175,9 @@ public class SystemBackend {
 		StudentAccountMap.put(ching_account.getLoginID(), ching_account);
 		StudentAccountMap.put(kevin_account.getLoginID(), kevin_account);
 	}
-	
+	/**
+	 * upload course data into a hashmap
+	 */
 	public static void uploadCourseData() {
 		AdminMgr.addCourse("CZ2001", "ALGORITHM", 3, SCHOOL.SCSE);
 		AdminMgr.addCourse("CZ2002", "OBJECT ORIENTED DESIGN & PROGRAMMING", 3, SCHOOL.SCSE);
@@ -367,6 +377,12 @@ public class SystemBackend {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// General
+	/**
+	 * retrieves student records from backend data
+	 * @param loginID 
+	 * @param password
+	 * @return
+	 */
 	public static StudentAccount retrieveStudentRecord(String loginID, String password) {
 	
 		StudentAccount temp = StudentAccountMap.get(loginID);
@@ -384,7 +400,12 @@ public class SystemBackend {
 			return null; 
 		}
 	}
-	
+	/**
+	 * retrieves staff records from backend data
+	 * @param loginID
+	 * @param password
+	 * @return
+	 */
 	public static StaffAccount retrieveStaffRecord(String loginID, String password) {
 		
 		StaffAccount temp =  StaffAccountMap.get(loginID);
@@ -406,7 +427,11 @@ public class SystemBackend {
 	
 	
 	// Admin Case 1:
-	
+	/**
+	 * checks if the user is accessing the system in their permitted time slot
+	 * @return
+	 * @throws ParseException
+	 */
 	public static boolean isAccessible() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
 		Calendar currentCal = GregorianCalendar.getInstance();
@@ -424,18 +449,30 @@ public class SystemBackend {
 			return false;
 		}
 	}
-	
+	/**
+	 * edits the timeslot where the user is permitted to access the system
+	 * @param startAccess
+	 * @param endAccess
+	 */
 	public static void editAccessPeriod(String startAccess, String endAccess) {
 		accessDateStart = startAccess;
 		accessDateEnd = endAccess;
 	}
-
+	/**
+	 * getting the student access date
+	 * @return
+	 */
 	public static String getAccessDate() {
 		return accessDateStart + " to " + accessDateEnd;
 	}
 	
 	// Admin case 1 (add course)
-	
+	/**
+	 * check if there is a similar course code in a list of courses
+	 * @param courseList list of courses
+	 * @param queryCourse query course
+	 * @return
+	 */
 	public static boolean checkMatchingCourseCode(ArrayList<Course> courseList, Course queryCourse) {
 		for (Course course : courseList) {
 			if (course.getCourseCode().equalsIgnoreCase(queryCourse.getCourseCode())) {
@@ -446,7 +483,11 @@ public class SystemBackend {
 	}
 	
 	// Admin Case 2 (Made by StudentAccount)
-	
+	/**
+	 * check if there is a course code within the backend data
+	 * @param courseCode
+	 * @return
+	 */
 	public static boolean checkCodeClash(String courseCode) {
 		if (CourseMap.containsKey(courseCode)) {
 			return true;
@@ -454,7 +495,11 @@ public class SystemBackend {
 			return false;
 		}
 	}
-	
+	/**
+	 * Check if a course exists
+	 * @param courseCode
+	 * @return
+	 */
 	public static boolean checkCourseExist(String courseCode) {
 		for (Course course : CourseMap.values()) {
 			if (course.getCourseCode() == courseCode) {
@@ -463,7 +508,10 @@ public class SystemBackend {
 		}
 		return false;
 	}
-
+	/**
+	 * add a course into the backend data
+	 * @param newCourse
+	 */
 	public static void addCourse(Course newCourse) {
 		CourseMap.put(newCourse.getCourseCode().toUpperCase(), newCourse);
 	}
@@ -471,7 +519,12 @@ public class SystemBackend {
 
 	
 	// Admin Case 4: Update Course
-	
+	/**
+	 * update the course code of a course
+	 * @param oldCourseCode
+	 * @param updatedCourseCode
+	 * @return
+	 */
 	public static String updateCourseCode(String oldCourseCode, String updatedCourseCode) {
 		// check if name already exists
 		for (Course course: CourseMap.values()) {
@@ -501,7 +554,11 @@ public class SystemBackend {
 		return updatedCourseCode;
 	}
 	
-	
+	/**
+	 * update the school of a course
+	 * @param currentCourseCode
+	 * @param updatedCourseSchool
+	 */
 	public static void updateCourseSchool(String currentCourseCode, SCHOOL updatedCourseSchool) {
 		for (Course course : CourseMap.values()) {
 			if (course.getCourseCode().equals(currentCourseCode)) {
@@ -510,7 +567,12 @@ public class SystemBackend {
 			}
 		}
 	}
-	
+	/**
+	 * update the capacity in a course
+	 * @param currentCourseCode
+	 * @param index
+	 * @param updateValue new capacity value to be updated
+	 */
 	public static void updateIndexCapacity(String currentCourseCode, int index, int updateValue) {
 		for (IndexDetail details : getCourse(currentCourseCode).getIndexDetail()) {
 			if (details.getIndex() == index) {
@@ -518,7 +580,19 @@ public class SystemBackend {
 			}
 		}
 	}
-	
+	/**
+	 * Adds lesson to existing index number in backend data
+	 * @param currentCourseCode course code to be changed
+	 * @param index course index to be changed
+	 * @param day day value of new lesson
+	 * @param type type value of new lesson
+	 * @param group group value of new lesson
+	 * @param location location of new lesson
+	 * @param lessonWeeks lesson weeks of new lesson
+	 * @param remarks remarks of new lesson 
+	 * @param startTime start time of new lesson
+	 * @param endTime end time of new lesson
+	 */
 	public static void addLessonToExistingIndex(String currentCourseCode, int index,
 			DAY day, String type, String group, String location, WEEK lessonWeeks, String remarks, String startTime, String endTime) {
 		
@@ -530,6 +604,11 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * check if the login id exists in backend account data
+	 * @param login
+	 * @return
+	 */
 	public static boolean checkLoginExist(String login) {
 		if (StudentAccountMap.containsKey(login)) {
 			return true;
@@ -540,6 +619,11 @@ public class SystemBackend {
 
 	
 	// [ADMIN AND USER]
+	/**
+	 * get number of vacancies in a course 
+	 * @param indexReading index of course
+	 * @return
+	 */
 	public static int getClassVacancies(int indexReading) {
 		int vacancies = -1;
 		for (Course course : CourseMap.values()) {
@@ -554,6 +638,11 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * get a formatted list of students in a course index
+	 * @param indexReading6
+	 * @return
+	 */
 	public static String getFormattedStudentListIndex(int indexReading6) {
 		ArrayList<StudentAccount> collated = new ArrayList<StudentAccount>();
 		for (StudentAccount student : StudentAccountMap.values()) {
@@ -567,6 +656,11 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * get a formatted list of students in a course
+	 * @param courseNameFilter
+	 * @return
+	 */
 	public static String getFormattedStudentListCourse(String courseNameFilter) {
 		ArrayList<Integer> collatedIndexes = new ArrayList<Integer>();	
 		for (Course course : CourseMap.values()) {
@@ -592,6 +686,11 @@ public class SystemBackend {
 	}
 
 	// [ADMIN]
+	/**
+	 * format data of students to be displayed
+	 * @param collated list of students
+	 * @return
+	 */
 	private static String customStringFormat1(ArrayList<StudentAccount> collated) {
 		StringBuilder sb = new StringBuilder();
 		int listCount = 1; // Increment by 1.
@@ -606,6 +705,11 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * add a student into a course
+	 * @param index
+	 * @param account
+	 */
 	public static void addCourseForStudent(int index, StudentAccount account) {
 		
 		// Confirm addition of courses
@@ -621,6 +725,11 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * add a student into a course waiting list
+	 * @param index
+	 * @param account
+	 */
 	public static void addCourseWaitListForStudent(int index, StudentAccount account) {
 		
 		// Confirm addition of courses
@@ -635,7 +744,10 @@ public class SystemBackend {
 			}
 		}
 	}
-	
+	/**
+	 * add a student from the waiting list into a course
+	 * @param index
+	 */
 	public static void handlingPopOfWaitList(int index) {
 		// Get IndexDetail
 		IndexDetail detail = SystemBackend.getIndexDetails(index);
@@ -655,6 +767,12 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * check if theres a timing clash between 2 index details
+	 * @param currentIndexDetail
+	 * @param newIndexDetail
+	 * @return
+	 */
 	public static boolean checkTimingClashes(ArrayList<IndexDetail> currentIndexDetail, IndexDetail newIndexDetail) {
 		
 		// Check timing clashes 
@@ -670,7 +788,11 @@ public class SystemBackend {
 		}
 		return false;
 	}
-	
+	/**
+	 * Retrieve the courses from a list of indexes
+	 * @param indexList
+	 * @return
+	 */
 	public static ArrayList<Course> retrieveCourseListByIndexList(ArrayList<Integer> indexList){
 		ArrayList<Course> listOfCoursesTaken = new ArrayList<Course>();
 		for (Integer i : indexList) {
@@ -679,7 +801,12 @@ public class SystemBackend {
 		}
 		return listOfCoursesTaken;
 	}
-	
+	/**
+	 * check if a course has a particular index
+	 * @param course
+	 * @param index
+	 * @return
+	 */
 	public static boolean indexExistInCourse(Course course, int index) {
 		for (IndexDetail details : course.getIndexDetail()) {
 			if (details.getIndex() == index) {
@@ -688,7 +815,12 @@ public class SystemBackend {
 		}
 		return false;
 	}
-	
+	/**
+	 * check if timing clashes between a list of indexes and an index
+	 * @param indexList
+	 * @param index
+	 * @return
+	 */
 	public static boolean checkTimingClashes(ArrayList<Integer> indexList, int index) {
 		// Check timing clashes 
 		IndexDetail incomingIndexDetail = null; 
@@ -714,6 +846,11 @@ public class SystemBackend {
 	}
 
 		// [USER]
+	/**
+	 * drop a user from a course
+	 * @param index
+	 * @param account
+	 */
 	public static void dropCourse(int index, StudentAccount account) {
 		// get course code from index number
 		int capacity;
@@ -732,6 +869,11 @@ public class SystemBackend {
 	
 	
 	// [USER]
+	/**
+	 * create a string of courses registered by the student
+	 * @param courseList
+	 * @return
+	 */
 	private static String generateCourseRegisteredString(ArrayList<IndexDetail> courseList) {
 		StringBuilder sb = new StringBuilder();
 		int listCount = 1; // Increment by 1.
@@ -744,6 +886,11 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * get list of indexes from student object
+	 * @param account
+	 * @return
+	 */
 	private static ArrayList<IndexDetail> getStudentIndexList(StudentAccount account) {
 		// Get the corresponding (currently registered) index details for comparison
 		ArrayList<Integer> currentIndexes= account.getListCoursesRegistered();
@@ -761,6 +908,11 @@ public class SystemBackend {
 		return currentIndexDetail;
 	}
 		// [USER]
+	/**
+	 * get a list of courses from a student
+	 * @param account
+	 * @return
+	 */
 		private static ArrayList<IndexDetail> getStudentCourseList(StudentAccount account) {
 			// Get the corresponding (currently registered) index details for comparison
 			ArrayList<Integer> currentIndexes= account.getListCoursesRegistered();
@@ -781,6 +933,11 @@ public class SystemBackend {
 	}
 		
 		// [USER]
+		/**
+		 * get courses registered in an account
+		 * @param account
+		 * @return
+		 */
 	public static String getCoursesRegisteredString(StudentAccount account) {
 		ArrayList<IndexDetail> currentCourseDetails = getStudentCourseList(account);
 		String output = generateCourseRegisteredString(currentCourseDetails);		
@@ -788,6 +945,11 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * get index detail from a particular index
+	 * @param yourIndex
+	 * @return
+	 */
 	public static IndexDetail getIndexDetails(int yourIndex) {
 		IndexDetail temp = null;
 		for (Course course: CourseMap.values()) {
@@ -801,12 +963,22 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * add a student account into the backend data
+	 * @param account
+	 */
 	public static void addStudentAccounts(StudentAccount account) {
 		StudentAccountMap.put(account.getLoginID().toUpperCase(), account);
 		
 	}
 
 	// [FROM BOUNDARY]
+	/**
+	 * add a new course index into a course code
+	 * @param currentCourseCode
+	 * @param newCourseIndex
+	 * @param capacity
+	 */
 	public static void addNewCourseIndex(String currentCourseCode, int newCourseIndex, int capacity) {
 		Course retreivedCourse = getCourse(currentCourseCode);
 		retreivedCourse.addNewIndexDetail(newCourseIndex, capacity);
@@ -814,12 +986,22 @@ public class SystemBackend {
 	}
 	
 	// [[FROM BOUNDARY]
+	/**
+	 * remove a index from a course
+	 * @param currentCourseCode
+	 * @param currentCourseIndex
+	 */
 	public static void removeCurrentCourseIndex(String currentCourseCode, int currentCourseIndex) {
 		getCourse(currentCourseCode).dropIndex(currentCourseIndex);	
 		System.out.println("Index number removed successfully");	
 	}
 	
 	// [Intermediate] 	// [[FROM BOUNDARY]
+	/**
+	 * get the course object from the course code
+	 * @param courseCode
+	 * @return
+	 */
 	public static Course getCourse(String courseCode) {
 		Course temp = null;
 		Collection<Course> courseList = CourseMap.values();
@@ -832,6 +1014,11 @@ public class SystemBackend {
 	}
 
 	// [Intermediate] 	// [[FROM BOUNDARY]
+	/**
+	 * get the course object from an index
+	 * @param index
+	 * @return
+	 */
 	public static Course getCourse(int index) {
 		Course temp = null;
 		Collection<Course> courseList = CourseMap.values();
@@ -846,6 +1033,12 @@ public class SystemBackend {
 	}
 	
 	// [Checks] 	// [[FROM BOUNDARY]
+	/**
+	 * check if there is a clash in timing between two indexes
+	 * @param currentCourseCode
+	 * @param newCourseIndex
+	 * @return
+	 */
 	public static boolean ifIndexClash(String currentCourseCode, int newCourseIndex) {
 		Collection<Course> courseList = CourseMap.values();
 		for (Course course : courseList) {
@@ -857,7 +1050,10 @@ public class SystemBackend {
 		}
 		return false;
 	}
-
+	/**
+	 * get a string of list of the courses
+	 * @return
+	 */
 	public static String getGeneralCourseList() {
 		StringBuilder sb = new StringBuilder();
 		for  (Course course : CourseMap.values()) {
@@ -870,7 +1066,13 @@ public class SystemBackend {
 		}
 		return sb.toString();
 	}
-
+	/**
+	 * change the index of a registered course
+	 * @param indexReadingOld
+	 * @param indexReadingNew
+	 * @param account
+	 * @return
+	 */
 	public static boolean changeIndex(int indexReadingOld, int indexReadingNew, StudentAccount account) {
 		SystemBackend.dropCourse(indexReadingOld, account);
 		SystemBackend.addCourseForStudent(indexReadingNew, account);

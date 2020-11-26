@@ -15,14 +15,22 @@ public class sendEmail {
 	public static void sendmail(String toEmail, String subject, String body){
 		try
 	    {			
+			/**
+			* @param (props.put("mail.smtp.host", "smtp.gmail.com")) (SMTP Host)
+			* @param (props.put("mail.smtp.port", "587")) (TLS Port)
+			* @param (props.put("mail.smtp.auth", "true")) (Enabling authentification)
+			* @param (props.put("mail.smtp.starttls.enable", "true")) (Enabling STARTTLS)
+			*/
 			Properties props = new Properties();
-			props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
-			props.put("mail.smtp.port", "587"); //TLS Port
-			props.put("mail.smtp.auth", "true"); //enable authentication
-			props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+			props.put("mail.smtp.host", "smtp.gmail.com");
+			props.put("mail.smtp.port", "587"); 
+			props.put("mail.smtp.auth", "true"); 
+			props.put("mail.smtp.starttls.enable", "true"); 
 
 			Authenticator auth = new Authenticator() {
-				//override the getPasswordAuthentication method
+				/**
+		    	* @param (return new PasswordAuthentication()) (Overriding the getPasswordAuthentication method)
+		    	*/
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication("bobr4661@gmail.com", "Catdog123");
 				}
@@ -31,7 +39,9 @@ public class sendEmail {
 			Session session = Session.getInstance(props, auth);
 		
 			MimeMessage msg = new MimeMessage(session);
-			//set message headers
+			/**
+	    	* @param (msg.addHeader()) (Adding message headers)
+	    	*/
 			msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
 			msg.addHeader("format", "flowed");
 			msg.addHeader("Content-Transfer-Encoding", "8bit");

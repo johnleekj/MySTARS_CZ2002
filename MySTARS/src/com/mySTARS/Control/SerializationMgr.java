@@ -23,7 +23,9 @@ public class SerializationMgr {
 
 	public static void main(String[] args) {
 		
-//		// Load Data	
+		/**
+    	* @param Code beneath is for loading of data
+    	*/
 //		SystemBackend.uploadStaffData();
 //		SystemBackend.uploadStudentData();
 //		SystemBackend.uploadCourseData();
@@ -34,14 +36,20 @@ public class SerializationMgr {
 	
 	
 	public static void serializeMap(HashMap mapsave, String filename) {
-		// Serialization  
+		/**
+    	* @param Serialization done here
+    	*/
         try
         {    
-            //Saving of object in a file 
+        	/**
+        	* @param Saving object in a file
+        	*/
             FileOutputStream file = new FileOutputStream(filename, false); 
             ObjectOutputStream out = new ObjectOutputStream(file); 
  
-            // Method for serialization of object 
+            /**
+        	* @param Method for Serialization of object
+        	*/
             out.writeObject(mapsave); 
             
             out.close(); 
@@ -58,7 +66,9 @@ public class SerializationMgr {
 	}
 	
 	public static HashMap deserializeMap(String filename) {
-//      De-serialization 
+		/**
+    	* @param De-serialization done here
+    	*/
         HashMap<Integer, String> map = null;
         try
         {
@@ -76,7 +86,9 @@ public class SerializationMgr {
            c.printStackTrace();
         }
         System.out.println("Deserialized HashMap..");
-//        // Display content using Iterator
+        /**
+    	* @param You can display the content using the iterator - the code below
+    	*/
 //        Set set = map.entrySet();
 //        Iterator iterator = set.iterator();
 //        while(iterator.hasNext()) {

@@ -12,7 +12,7 @@ public class UpdateCourseMgr {
 	 * Updates course code of course in SystemBackend class
 	 * @param currentCourseCode the initial course code
 	 * @param newCourseCode the updated course code
-	 * @return
+	 * @return returns changed course code
 	 */
 	public static String changeCourseCode(String currentCourseCode, String newCourseCode) {
 		/*
@@ -35,7 +35,7 @@ public class UpdateCourseMgr {
 	 * Updates course index of course in SystemBackend class
 	 * @param currentCourseCode course code to be changed
 	 * @param newCourseIndex index to be added
-	 * @param capacity
+	 * @param capacity holds the index capacity of added index number
 	 */
 	public static void addIndexToExistingCourse(String currentCourseCode, int newCourseIndex, int capacity) {
 		/*

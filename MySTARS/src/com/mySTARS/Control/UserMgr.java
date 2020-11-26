@@ -122,11 +122,11 @@ public class UserMgr {
 		
 		// add back either old index or new index
 		if (!yourClash) {
-			addCourse(indexReadingNew, account);
+			SystemBackend.addCourseForStudent(indexReadingNew, account);
 			NotificationMgr.IndexChange(account.getEmail(), indexReadingOld, indexReadingNew);
 			result = "Index succesfully changed";
 		} else {
-			addCourse(indexReadingOld, account);
+			SystemBackend.addCourseForStudent(indexReadingOld, account);
 			result = "Timing clash, index not changed";
 		}
 		

@@ -91,6 +91,7 @@ public class MainScreen {
 					/**
 					* @param (FileMgr.saveAll();) (Saving of file is carried out here)
 					*/
+					FileMgr.saveAll();
 					System.out.println("Done!");
 					System.out.println("Quiting mySTARS now...");
 					quit = true;

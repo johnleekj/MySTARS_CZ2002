@@ -8,11 +8,20 @@ import com.mySTARS.ENUMS.SCHOOL;
 import com.mySTARS.Entities.IndexDetail;
 import com.mySTARS.Entities.StaffAccount;
 import com.mySTARS.Entities.SystemBackend;
-
+/**	
+ * 
+ * Admin Screen class to handle admin interactions.
+ *
+ */
 public class AdminScreen {
 	
 	public static Scanner scanner = new Scanner(System.in);
-
+	
+	/**
+	 * Logs admin account into system. Displays menu options for admin interactions.
+	 * @param staffAcc
+	 */
+	
 	public static void enterAdmin(StaffAccount staffAcc) {
 		int sel;
 		boolean toLogout = false;
@@ -22,40 +31,40 @@ public class AdminScreen {
 			sel = GenericBoundary.readIntInputFromUser();
 			switch (sel) {
 				case 1:
-					/**
-					* @param Admin chooses to edit the access period that students can access MySTARS
+					/*
+					* Admin chooses to edit the access period that students can access MySTARS
 					*/
 					System.out.println("[Editing Access Period]");
 					String startAccess = null;
 					String endAccess = null;
 					System.out.print("Please enter start of access date (Format: yyyy-MM-dd) ");
-					/**
-					* @param (startAccess = scanner.nextLine().trim()) (Reads in user input for START of access DATE)
+					/*
+					* (startAccess = scanner.nextLine().trim()) (Reads in user input for START of access DATE)
 					*/
 					startAccess = scanner.nextLine().trim();
 					System.out.print("Please enter start of access time (Format: HH:mm:ss) ");
-					/**
-					* @param (startAccess = scanner.nextLine().trim()) (Reads in user input for START of access TIME)
+					/*
+					* (startAccess = scanner.nextLine().trim()) (Reads in user input for START of access TIME)
 					*/
 					startAccess += " at " + scanner.nextLine().trim();
 					System.out.print("Please enter end of access date (Format: yyyy-MM-dd) ");
-					/**
-					* @param (startAccess = scanner.nextLine().trim()) (Reads in user input for END of access DATE)
+					/*
+					* (startAccess = scanner.nextLine().trim()) (Reads in user input for END of access DATE)
 					*/
 					endAccess = scanner.nextLine().trim();
 					System.out.print("Please enter end of access time (Format: HH:mm:ss) ");
-					/**
-					* @param (startAccess = scanner.nextLine().trim()) (Reads in user input for END of access TIME)
+					/*
+					*(startAccess = scanner.nextLine().trim()) (Reads in user input for END of access TIME)
 					*/
 					endAccess += " at " + scanner.nextLine().trim();
-					/**
-					* @param (SystemMgr.editAccessPeriod(startAccess, endAccess)) (Calls SystemMgr to edit the access period data)
+					/*
+					* (SystemMgr.editAccessPeriod(startAccess, endAccess)) (Calls SystemMgr to edit the access period data)
 					*/
 					SystemMgr.editAccessPeriod(startAccess, endAccess);
 					break;
 				case 2:
-					/**
-					* @param Admin chooses to add student to the database
+					/*
+					* Admin chooses to add student to the database
 					*/
 					System.out.println("[Adding Student]");
 					String login = null;
@@ -65,28 +74,28 @@ public class AdminScreen {
 					String gender = null;
 					String nationality = null;
 					String matricNo = null;
-					/**
-					* @param (login = GenericBoundary.readStringInputUPPER()) (Calling GenericBoundary class to read in string input from user and use it as student account data)
+					/*
+					* (login = GenericBoundary.readStringInputUPPER()) (Calling GenericBoundary class to read in string input from user and use it as student account data)
 					*/
 					login = GenericBoundary.readStringInputUPPER("Enter new loginID: ");
-					/**
-					* @param (while (AdminMgr.ifLoginClash(login))) (Ensuring that the loginID is unique)
+					/*
+					* (while (AdminMgr.ifLoginClash(login))) (Ensuring that the loginID is unique)
 					*/
 					while (AdminMgr.ifLoginClash(login)) {
 						login = GenericBoundary.readStringInputUPPER("LoginID taken. Enter another loginID: ");
 					}
 					password = GenericBoundary.readStringInputCaseSensitive("Enter new password: ");
 					email = GenericBoundary.readStringInputUPPER("Enter student email: ");
-					/**
-					* @param Here is where the name, gender, nationality, matricNo is read in as data to be part of student account
+					/*
+					* Here is where the name, gender, nationality, matricNo is read in as data to be part of student account
 					*/
 					name = GenericBoundary.readStringInputUPPER("Enter student name: ");
 					gender = GenericBoundary.readStringInputUPPERnoInt("Enter student gender: ");
 					nationality = GenericBoundary.readStringInputUPPERnoInt("Enter student nationality: ");
 					matricNo = GenericBoundary.readStringInputUPPER("Enter student matriculationNo: ");
-					
-					/**
-					* @param (AdminMgr.addStudentAccounts()) (Calling AdminMgr class which calls StudentAccount and SystemBackend class to add the data input as a new student account that is to be added in the database)
+				
+					/*
+					* (AdminMgr.addStudentAccounts()) (Calling AdminMgr class which calls StudentAccount and SystemBackend class to add the data input as a new student account that is to be added in the database)
 					*/
 					AdminMgr.addStudentAccounts(
 							staffAcc,
@@ -101,20 +110,20 @@ public class AdminScreen {
 					System.out.println("Added new student and account.");
 					break;
 				case 3:
-					/**
-					* @param Admin chooses to add new course to the database
+					/*
+					* Admin chooses to add new course to the database
 					*/
 					System.out.println("[Adding new Course]");
 					String courseCode = null;
 					String courseName = null;
 					int courseUnits = 0;
 					SCHOOL schoolName = null;
-					/**
-					* @param (courseCode = GenericBoundary.readStringInputUPPER()) (Calling GenericBoundary class to read in string input from user and use it as the new courseCode)
+					/*
+					* (courseCode = GenericBoundary.readStringInputUPPER()) (Calling GenericBoundary class to read in string input from user and use it as the new courseCode)
 					*/
 					courseCode = GenericBoundary.readStringInputUPPER("Enter new course code: ");
-					/**
-					* @param (while (AdminMgr.ifCourseCodeClash(courseCode))) (Calling AdminMgr class which calls Course class to check courseCode entered by admin does not already exist)
+					/*
+					* (while (AdminMgr.ifCourseCodeClash(courseCode))) (Calling AdminMgr class which calls Course class to check courseCode entered by admin does not already exist)
 					*/
 					while (AdminMgr.ifCourseCodeClash(courseCode)) {
 						courseCode = GenericBoundary.readStringInputUPPER("Course code taken. Enter another course code: ");
@@ -123,8 +132,8 @@ public class AdminScreen {
 					courseUnits = GenericBoundary.readPositiveIntInputFromUser("Enter course units: ");
 					schoolName = GenericBoundary.readSchool();
 					
-					/**
-					* @param (AdminMgr.addCourse()) (Calling AdminMgr class which calls Course and SystemBackend class to add the data input as a new course that is to be added in the database)
+					/*
+					* (AdminMgr.addCourse()) (Calling AdminMgr class which calls Course and SystemBackend class to add the data input as a new course that is to be added in the database)
 					*/
 					AdminMgr.addCourse(
 							courseCode,
@@ -134,25 +143,25 @@ public class AdminScreen {
 					System.out.println("Added new course.");
 					break;
 				case 4:
-					/**
-					* @param Admin chooses to update details of an existing course
+					/*
+					* Admin chooses to update details of an existing course
 					*/
 					System.out.println("[Updating Course]");
-					/**
-					* @param (AdminMgr.enterUpdateScreen()) (Calls AdminMgr class which calls updateCourseScreen class to display the changes menu from which admin can choose from)
+					/*
+					* (AdminMgr.enterUpdateScreen()) (Calls AdminMgr class which calls updateCourseScreen class to display the changes menu from which admin can choose from)
 					*/
 					AdminMgr.enterUpdateScreen(staffAcc);
 					break;
 				case 5:
-					/**
-					* @param Admin chooses to check how many available slots are there in a class
+					/*
+					* Admin chooses to check how many available slots are there in a class
 					*/
 					System.out.println("[Checking available slots in class]");
 					int indexReading5 = GenericBoundary.readPositiveIntInputFromUser("Please enter course index to check vacancies");
 					int vacancies = AdminMgr.checkVacancies(indexReading5);
-					/**
-					* @param (if (vacancies < 0)) (Checks if index number entered by admin is even valid)
-					* @param (else()) (Returns number of vacancies by calling indexDetail class to check for number of vacancies)
+					/*
+					* (if (vacancies < 0)) (Checks if index number entered by admin is even valid)
+					* (else()) (Returns number of vacancies by calling indexDetail class to check for number of vacancies)
 					*/
 					if (vacancies < 0) {
 						System.out.println("Error. Index not found.");
@@ -161,56 +170,60 @@ public class AdminScreen {
 					}
 					break;
 				case 6:
-					/**
-					* @param Admin chooses to print student list by index number
+					/*
+					* Admin chooses to print student list by index number
 					*/
 					System.out.println("[Printing student list by index number]");
 					int indexReading6 = GenericBoundary.readPositiveIntInputFromUser("Please enter course index to print list by: ");
-					/**
-					* @param (formatByIndex = AdminMgr.getStudentList()) (Calls AdminMgr class which calls SystemBackend and IndexDetail class to check for students that are in each index, then it checks against StudentInformation class for the student detailss)
+					/*
+					* (formatByIndex = AdminMgr.getStudentList()) (Calls AdminMgr class which calls SystemBackend and IndexDetail class to check for students that are in each index, then it checks against StudentInformation class for the student detailss)
 					*/
 					String formatByIndex = AdminMgr.getStudentList(indexReading6);
 					System.out.println("List of student taking index number: [" + indexReading6 +"]");
 					System.out.println(formatByIndex);
 					break;
 				case 7:
-					/**
-					* @param Admin chooses to print student list by course
+					/*
+					* Admin chooses to print student list by course
 					*/
 					System.out.println("[Printing student list by course]");
 					System.out.println("Print student list by course");
 					String courseNameFilter = GenericBoundary.readStringInputUPPER("Please enter course to print list by: ");
-					/**
-					* @param (formatByCourse = AdminMgr.getStudentList()) (Calls AdminMgr class which calls SystemBackend and Course class to check for students that are in each index, then it checks against StudentInformation class for the student detailss)
+					/*
+					* (formatByCourse = AdminMgr.getStudentList()) (Calls AdminMgr class which calls SystemBackend and Course class to check for students that are in each index, then it checks against StudentInformation class for the student detailss)
 					*/
 					String formatByCourse = AdminMgr.getStudentList(courseNameFilter);
 					System.out.println("List of student taking course: [" + courseNameFilter +"]");
 					System.out.println(formatByCourse);
 					break;
 				case 8:
-					/**
-					* @param Print entire course list for admin
+					/*
+					* Print entire course list for admin
 					*/
 					printCourseList();
 					break;
 				case 9:
-					/**
-					* @param Admin logout
+					/*
+					* Admin logout
 					*/
 					toLogout = true;
 					break;
 				default:
-					/**
-					* @param Default case that is activated should the user input not be an integer type within the given cases
+					/*
+					* Default case that is activated should the user input not be an integer type within the given cases
 					*/
 					System.out.println("Invalid choice, try again");
 				}
 		} while (!toLogout);
 	}
 	
+	/**
+	 * Displays the admin menu
+	 */
+	
 	public static void displayAdminMenu() {
-		/**
-		* @param Admin Menu that users see upon successfully logging into their account
+		/*
+		* Admin Menu that users see upon successfully logging into their account
 		*/
 		System.out.println(	"[ADMIN MENU]");
 		System.out.println(	"Hi, what would you like to do now?\n" +
@@ -224,7 +237,9 @@ public class AdminScreen {
 							"8. Print full course list\n" +
 							"9. Logout");
 	}
-	
+	/**
+	 * Print list of courses
+	 */
 	public static void printCourseList() {
 		System.out.println("Here are the list of courses");
 		System.out.println("============================================================");

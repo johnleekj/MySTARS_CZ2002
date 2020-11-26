@@ -1,0 +1,4 @@
+LOGIN_ID, HASH_PASSWORD, EMAIL, STAFF_ID, NAME, GENDER, NATIONALITY
+Admin, Admin, admin@e.ntu.edu.sg, S000, Rob, M, SINGAPOREAN
+BOB_ADMIN, Admin@CSC, bob@e.ntu.edu.sg, S001, BOB, M, SINGAPOREAN
+TOM_ADMIN, TheGreatTom, tom@e.ntu.edu.sg, S002, TOM, M, MALAYSIAN

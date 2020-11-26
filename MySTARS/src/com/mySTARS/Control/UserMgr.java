@@ -114,7 +114,7 @@ public class UserMgr {
 		}
 
 		// drop old index		
-		dropCourse(indexReadingOld, account);
+		SystemBackend.dropCourse(indexReadingOld, account);
 		
 		// check for timing clash with new index
 		ArrayList<Integer> TimeTable = account.getListCoursesRegistered();

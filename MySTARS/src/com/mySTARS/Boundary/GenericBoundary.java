@@ -2,66 +2,90 @@ package com.mySTARS.Boundary;
 
 import java.util.Scanner;
 import com.mySTARS.ENUMS.*;
-
+/**
+ * GenericBoundary acts as a helper class to help manage interactions with the users.
+ * 
+ *
+ */
 public class GenericBoundary {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	
+	/**
+	 * read integer inputs from users
+	 * @return returns an integer value
+	 */
 	public static int readIntInputFromUser() {
 		int sel;		
-		/**
-		* @param (while (!scanner.hasNextInt())) (Check if next input is an integer)
-		* @param (scanner.nextLine()) (Clears the input buffer)
+		/*
+		* (while (!scanner.hasNextInt())) (Check if next input is an integer)
+		* (scanner.nextLine()) (Clears the input buffer)
 		*/
 		while (!scanner.hasNextInt()) {
 			System.out.println("Please enter a valid integer choice!");
 			scanner.nextLine();
 		}
 		 
-		/**
-		* @param (sel = scanner.nextInt()) (Read in integer into sel)
+		/*
+		* (sel = scanner.nextInt()) (Read in integer into sel)
 		*/
 		sel = scanner.nextInt();
 		scanner.nextLine();
 		return sel;
 	}
-	
+	/**
+	 * Reads uppercase string input
+	 * @param onScreenMessage displays message when requesting input
+	 * @return Returns a string
+	 */
 	public static String readStringInputUPPER(String onScreenMessage) {
 		System.out.print(onScreenMessage);
 		String input = scanner.nextLine().trim().toUpperCase();
 		return input;
 	}
-	
+	/**
+	 * Reads case sensitive string input
+	 * @param onScreenMessage displays message when requesting input
+	 * @return Returns a string
+	 */
 	public static String readStringInputCaseSensitive(String onScreenMessage) {
 		System.out.print(onScreenMessage);
 		String input = scanner.nextLine().trim();
 		return input;
 	}
-
+	/**
+	 * Reads integer input from user when users inputs a string
+	 * @param string
+	 * @return integer value
+	 */
 	public static int readIntInputFromUser(String string) {
 		System.out.println(string);
 		int sel;		
-		/**
-		* @param (while (!scanner.hasNextInt())) (Check if next input is an integer)
+		/*
+		* (while (!scanner.hasNextInt())) (Check if next input is an integer)
 		*/
 		while (!scanner.hasNextInt()) {
 			System.out.println("Please enter a valid integer choice!");
 			scanner.nextLine(); // To clear input buffer.
 		}
 		
-		/**
-		* @param (sel = scanner.nextInt()) (Read in integer into sel)
+		/*
+		* (sel = scanner.nextInt()) (Read in integer into sel)
 		*/
 		sel = scanner.nextInt();
 		scanner.nextLine();
 		return sel;
 	}
-	
+	/**
+	 * Reads positive int input from user from a string
+	 * @param string
+	 * @return positive integer
+	 */
 	public static int readPositiveIntInputFromUser(String string) {
 		System.out.println(string);
 		int sel;		
-		/**
-		* @param (while (!scanner.hasNextInt())) (Check if next input is an integer)
+		/*
+		* (while (!scanner.hasNextInt())) (Check if next input is an integer)
 		*/
 		do {
 			while (!scanner.hasNextInt()) {
@@ -69,8 +93,8 @@ public class GenericBoundary {
 				scanner.nextLine(); // To clear input buffer.
 			}
 			
-			/**
-			* @param (sel = scanner.nextInt()) (Read in integer into sel)
+			/*
+			* (sel = scanner.nextInt()) (Read in integer into sel)
 			*/
 			sel = scanner.nextInt();
 			scanner.nextLine();
@@ -80,7 +104,10 @@ public class GenericBoundary {
 		} while (sel <= 0);
 		return sel;
 	}
-
+	/**
+	 * Obtains a school data value from user.
+	 * @return school value
+	 */
 	public static SCHOOL readSchool() {
 		
 		SCHOOL querySchool = null;
@@ -98,7 +125,10 @@ public class GenericBoundary {
 		} while (querySchool == null);
 		return querySchool;
 	}
-	
+	/**
+	 * Obtains a DAY data value from user.
+	 * @return DAY value
+	 */
 	public static DAY readDay() {
 		int sel;
 		DAY queryDay = null;
@@ -142,7 +172,10 @@ public class GenericBoundary {
 		} while (queryDay == null);
 		return queryDay; // Dummy return will never reach
 	}
-	
+	/**
+	 * Obtains a WEEK data value from user.
+	 * @return WEEK value
+	 */
 	public static WEEK readWeek() {
 		int sel;
 		WEEK queryWeek = null;
@@ -178,7 +211,11 @@ public class GenericBoundary {
 		} while (queryWeek == null);
 		return queryWeek; // Dummy return will never reach
 	}
-	
+	/**
+	 * Obtains a string only all uppercase no integer input from the user
+	 * @param onScreenMessage displays a message on screen when requesting input
+	 * @return all uppercase no integer string value
+	 */
 	public static String readStringInputUPPERnoInt(String onScreenMessage) {
 		System.out.print(onScreenMessage);
 		while (scanner.hasNextInt()) {

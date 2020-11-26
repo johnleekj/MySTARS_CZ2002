@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 import com.mySTARS.ENUMS.SCHOOL;
 /**
- * Course class holds the methods that handle implementation of code related to the courses.
+ * Course class holds the methods that handle implementation of code related to the courses
+ * 
  *
  */
 public class Course implements Serializable   {

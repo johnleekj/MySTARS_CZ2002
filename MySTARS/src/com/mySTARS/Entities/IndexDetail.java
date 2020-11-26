@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * index detail object containing the details of individual indexes of courses.
- * 
  *
  */
 public class IndexDetail implements Serializable   {

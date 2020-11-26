@@ -10,17 +10,20 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+/**
+ * class for sending of email through api
+ *
+ */
 public class sendEmail {
+	/**
+	 * send mail method for sending email
+	 * @param toEmail email address of receipient
+	 * @param subject subject matter of email
+	 * @param body body of email
+	 */
 	public static void sendmail(String toEmail, String subject, String body){
 		try
 	    {			
-			/**
-			* @param (props.put("mail.smtp.host", "smtp.gmail.com")) (SMTP Host)
-			* @param (props.put("mail.smtp.port", "587")) (TLS Port)
-			* @param (props.put("mail.smtp.auth", "true")) (Enabling authentification)
-			* @param (props.put("mail.smtp.starttls.enable", "true")) (Enabling STARTTLS)
-			*/
 			Properties props = new Properties();
 			props.put("mail.smtp.host", "smtp.gmail.com");
 			props.put("mail.smtp.port", "587"); 
@@ -28,8 +31,8 @@ public class sendEmail {
 			props.put("mail.smtp.starttls.enable", "true"); 
 
 			Authenticator auth = new Authenticator() {
-				/**
-		    	* @param (return new PasswordAuthentication()) (Overriding the getPasswordAuthentication method)
+				/*
+		    	* (return new PasswordAuthentication()) (Overriding the getPasswordAuthentication method)
 		    	*/
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication("bobr4661@gmail.com", "Catdog123");

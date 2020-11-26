@@ -22,7 +22,11 @@ import com.mySTARS.ENUMS.SCHOOL;
 import com.mySTARS.ENUMS.WEEK;
 import com.mySTARS.ENUMS.DAY;
 
-
+/**
+ * SystemBackend class acts like a database for us, holding all our
+ * temporary data and carrying out and handling the implementation
+ * for most of our code
+ */
 public class SystemBackend {
 
 	// Format : "yyyy.MM.dd G 'at' HH:mm:ss"
@@ -39,8 +43,10 @@ public class SystemBackend {
 
 	// Key, Object : courseCode, Course
 	public static Map<String, Course> CourseMap = new HashMap<>();
-	
 
+	/**
+	 * Used to upload all the data that we have relevant to our staff
+	 */
 	public static void uploadStaffData() {
 		//		LOGIN_ID, HASH_PASSWORD, EMAIL, STAFF_ID, NAME, GENDER, NATIONALITY
 		//		BOB_ADMIN, Admin@CSC, bob@e.ntu.edu.sg, S001, BOB, M, SINGAPOREAN
@@ -61,6 +67,9 @@ public class SystemBackend {
 		
 	}
 	
+	/**
+	 * Used to upload all the data that we have relevant to our students
+	 */
 	public static void uploadStudentData() {
 		//		LOGIN_ID, HASH_PASSWORD, EMAIL, STAFF_ID, NAME, GENDER, NATIONALITY
 		//		JORGE_NTU, apple123, JORGE01A@E.NTU.EDU.SG, U001, JORGE, M, SINGAPOREAN
@@ -168,6 +177,9 @@ public class SystemBackend {
 		StudentAccountMap.put(kevin_account.getLoginID(), kevin_account);
 	}
 	
+	/**
+	 * Used to upload all the data that we have relevant to our courses
+	 */
 	public static void uploadCourseData() {
 		AdminMgr.addCourse("CZ2001", "ALGORITHM", 3, SCHOOL.SCSE);
 		AdminMgr.addCourse("CZ2002", "OBJECT ORIENTED DESIGN & PROGRAMMING", 3, SCHOOL.SCSE);
@@ -335,7 +347,7 @@ public class SystemBackend {
 		cz2005.addLesson(10231, c);
 		cz2005.addLesson(10231, d);
 
-		// MADONNA
+		// MADONNA - test student
 		StudentAccount madonna = StudentAccountMap.get("MADONNA_NTU");
 		ArrayList<Integer> temp = new ArrayList<Integer>();
 		temp.add(10185);
@@ -344,7 +356,7 @@ public class SystemBackend {
 		temp.add(10218); // CZ2004
 		madonna.setCourseHistory(temp);
 		
-		// CHING
+		// CHING - test student
 		StudentAccount ching = StudentAccountMap.get("CHING_NTU");
 		ArrayList<Integer> temp2 = new ArrayList<Integer>();
 		temp2.add(10482);
@@ -353,7 +365,7 @@ public class SystemBackend {
 		temp2.add(10244);
 		ching.setCourseHistory(temp2);
 		
-		// KEVIN
+		// KEVIN - test students
 		StudentAccount kevin = StudentAccountMap.get("KEVIN_NTU");
 		ArrayList<Integer> temp3 = new ArrayList<Integer>();
 		temp3.add(10184); // CZ2001
@@ -367,6 +379,13 @@ public class SystemBackend {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// General
+	/**
+	 * Method to retrieve the student record, using their loginID and password
+	 * 
+	 * @param loginID Username of student 
+	 * @param password Password of student 
+	 * @return Returns student account
+	 */
 	public static StudentAccount retrieveStudentRecord(String loginID, String password) {
 	
 		StudentAccount temp = StudentAccountMap.get(loginID);
@@ -385,6 +404,13 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * Method to retrieve the staff record, using their loginID and password
+	 * 
+	 * @param loginID Username of staff
+	 * @param password Password of staff
+	 * @return Returns staff account
+	 */
 	public static StaffAccount retrieveStaffRecord(String loginID, String password) {
 		
 		StaffAccount temp =  StaffAccountMap.get(loginID);
@@ -406,7 +432,12 @@ public class SystemBackend {
 	
 	
 	// Admin Case 1:
-	
+	/**
+	 * Method to check if MySTARS should be allowed to be accessible to students at current time, according to gregorian calendar
+	 * 
+	 * @return Returns boolean value true / false
+	 * @throws ParseException 
+	 */
 	public static boolean isAccessible() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
 		Calendar currentCal = GregorianCalendar.getInstance();
@@ -425,11 +456,22 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * Method to edit the access period that students can access MySTARS
+	 * 
+	 * @param startAccess Start of access period
+	 * @param endAccess End of access period
+	 */
 	public static void editAccessPeriod(String startAccess, String endAccess) {
 		accessDateStart = startAccess;
 		accessDateEnd = endAccess;
 	}
 
+	/**
+	 * Method to get the access date that students can access MySTARS
+	 * 
+	 * @return Return the date
+	 */
 	public static String getAccessDate() {
 		return accessDateStart + " to " + accessDateEnd;
 	}

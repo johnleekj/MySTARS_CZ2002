@@ -1,5 +1,6 @@
 package com.mySTARS.Boundary;
 
+import com.mySTARS.Control.EncryptionMgr;
 import com.mySTARS.Control.SystemMgr;
 import com.mySTARS.Control.UserMgr;
 import com.mySTARS.Entities.Course;
@@ -61,8 +62,8 @@ public class UserScreen {
 				System.out.println("[Swaping Index Number With Another Student]");
 				int yourIndex = GenericBoundary.readIntInputFromUser("Please enter your index: ");
 				int otherIndex = GenericBoundary.readIntInputFromUser("Please enter the other student's index: ");
-				String username = MainScreen.readUsername(); 
-				String password = MainScreen.readPassword();
+				String username = EncryptionMgr.readUsername();
+				String password = EncryptionMgr.readPassword();
 				String status = UserMgr.swopIndex(yourIndex, otherIndex, studentAccount, username, password);
 				System.out.println(status); 
 				break;

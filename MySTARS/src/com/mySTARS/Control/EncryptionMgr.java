@@ -4,6 +4,8 @@ import java.io.Console;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.mySTARS.Boundary.GenericBoundary;
+
 public class EncryptionMgr {
 
 	public static void main(String[] args) {
@@ -51,4 +53,23 @@ public class EncryptionMgr {
         
         return new String(passwordArray).trim();
     }
+	
+	public static String readUsername() {
+		String username = GenericBoundary.readStringInputUPPER("Enter username: ").trim();
+		return username;
+	}
+
+	public static String readPassword() {
+		Console console = System.console();
+        if (console == null) {
+        	String password = GenericBoundary.readStringInputCaseSensitive("Enter password: ").trim();
+    		return password;
+        } else {
+        char[] passwordArray = console.readPassword("Enter password: ");
+//        console.printf("Password entered was: %s%n", new String(passwordArray));        
+        return new String(passwordArray).trim();	
+        }
+
+        
+	}
 }

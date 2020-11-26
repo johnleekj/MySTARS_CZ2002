@@ -29,8 +29,10 @@ public class MainScreen {
 			switch (sel) {
 				case 1:
 					System.out.println(	"[ Student Login ]");
-					username = readUsername();
-					password = readPassword();
+					username = EncryptionMgr.readUsername();
+//					password = readPassword();
+//					Below method for password masking, use only in final version
+					password = EncryptionMgr.readPassword();
 					StudentAccount studentAccount = AccountMgr.getStudentAccount(username, password);
 					if (studentAccount == null) {
 						continue;
@@ -52,8 +54,8 @@ public class MainScreen {
 					break;
 				case 2:
 					System.out.println(	"[ Staff Login ]");
-					username = readUsername();
-					password = readPassword();
+					username = EncryptionMgr.readUsername();
+					password = EncryptionMgr.readPassword();
 					StaffAccount staffAccount = AccountMgr.getStaffAccount(username, password);
 					if (staffAccount == null) {
 						continue;
@@ -84,17 +86,17 @@ public class MainScreen {
 	}
 	
 	
-	public static String readUsername() {
-	System.out.println("Enter username:");
-	String username = scanner.nextLine().trim().toUpperCase();
-	return username;
-	}
-
-	public static String readPassword() {
-	System.out.println("Enter password:");
-	String password = scanner.nextLine().trim();
-	return password;
-	}
+//	public static String readUsername() {
+//	System.out.println("Enter username:");
+//	String username = scanner.nextLine().trim().toUpperCase();
+//	return username;
+//	}
+//
+//	public static String readPassword() {
+//	System.out.println("Enter password:");
+//	String password = scanner.nextLine().trim();
+//	return password;
+//	}
 	
 	
 }

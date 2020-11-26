@@ -94,7 +94,7 @@ public class GenericBoundary {
 					return querySchool;
 				}
 			} 
-			System.out.println("Invalid school. Please enter again");
+			System.out.println("Invalid school. Please try again");
 		} while (querySchool == null);
 		return querySchool;
 	}

@@ -7,14 +7,26 @@ import com.mySTARS.Entities.Course;
 import com.mySTARS.Entities.IndexDetail;
 import com.mySTARS.Entities.StudentAccount;
 import com.mySTARS.Entities.SystemBackend;
-
+/**
+ * user manager class that handling of student objects
+ * @author user
+ *
+ */
 public class UserMgr {
-
+	/**
+	 * check vacancies of a course index
+	 * @param indexReading index of course
+	 * @return vacancies in index of course
+	 */
 	public static int checkVacancies(int indexReading) {
 		int vacancies = SystemBackend.getClassVacancies(indexReading);
 		return vacancies;
 	}
-
+	/**
+	 * boolean value on whether a course can be found
+	 * @param index course index
+	 * @return
+	 */
 	public static boolean canFindCourse(int index) { 
 		Course tryGetCourse = SystemBackend.getCourse(index);
 		if (tryGetCourse == null) {
@@ -23,7 +35,12 @@ public class UserMgr {
 			return true;
 		}
 	}
-	
+	/**
+	 * add course into student account
+	 * @param index index of course to be added
+	 * @param account account that course will be added into
+	 * @return
+	 */
 	public static String addCourse(int index, StudentAccount account) {
 		String result = null;
 		
@@ -76,7 +93,12 @@ public class UserMgr {
 				return result;
 			}		
 	}
-	
+	/**
+	 * drop course from student account
+	 * @param index index of course to be dropped
+	 * @param account account that course will be dropped from
+	 * @return
+	 */
 	public static String dropCourse(int index, StudentAccount account) {
 		String result = null;
 		boolean canFindCourse1 = UserMgr.canFindCourse(index);
@@ -97,10 +119,15 @@ public class UserMgr {
 		}
 		
 	}
-	
+	/**
+	 * change index of a registered course
+	 * @param indexReadingOld old index
+	 * @param indexReadingNew new index
+	 * @param account account that registerd course index will be changed in
+	 * @return
+	 */
 	public static String changeIndex(int indexReadingOld, int indexReadingNew, StudentAccount account) {
 		String result;
-//		return result = "Sorry the change index method has not been implemented.";
 		
 //		// Check if both indexes are valid
 		Course yourCourse = SystemBackend.getCourse(indexReadingOld);
@@ -132,12 +159,24 @@ public class UserMgr {
 		
 		return result;
 	}
-
+	/**
+	 * returns a string of courses registered for display
+	 * @param account account of registered courses we want to display
+	 * @return
+	 */
 	public static String getCoursesRegistered(StudentAccount account) {
 		String string = SystemBackend.getCoursesRegisteredString(account);
 		return string;
 	}
-
+	/**
+	 * swapping of index between 2 students
+	 * @param yourIndex index of student 1
+	 * @param otherIndex index of student 2
+	 * @param yourAccount account of student 1
+	 * @param username username of student 2 for verification
+	 * @param password password of student 2 for verification
+	 * @return
+	 */
 	public static String swopIndex(int yourIndex, int otherIndex, StudentAccount yourAccount, String username, String password) {
 		
 		String result;

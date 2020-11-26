@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * index detail object containing the details of individual indexes of courses.
- * @author user
  *
  */
 public class IndexDetail implements Serializable   {
@@ -17,10 +16,10 @@ public class IndexDetail implements Serializable   {
 	private ArrayList<String> waitList;
 	/**
 	 * index detail constructor 
-	 * @param index
-	 * @param capacity
-	 * @param lessonList
-	 * @param waitList
+	 * @param index index value
+	 * @param capacity capacity value
+	 * @param lessonList lesson list
+	 * @param waitList waitlist
 	 */
 	public IndexDetail(int index, int capacity, ArrayList<Lesson> lessonList, ArrayList<String> waitList) {
 		this.index = index;
@@ -44,7 +43,7 @@ public class IndexDetail implements Serializable   {
 	}
 	/**
 	 * get the lessons in index details
-	 * @return
+	 * @return lessons
 	 */
 	private String getLessonString() {
 		String combined = "";
@@ -55,35 +54,35 @@ public class IndexDetail implements Serializable   {
 	}
 	/**
 	 * get the vacancies in index detail
-	 * @return
+	 * @return vacancies
 	 */
 	public int getVacancy() {
 		return this.capacity - this.currentEnrolled;
 	}
 	/**
 	 * get the index in index detail
-	 * @return
+	 * @return index
 	 */
 	public int getIndex() {
 		return index;
 	}
 	/**
 	 * set the index in index detail
-	 * @param index
+	 * @param index index
 	 */
 	public void setIndex(int index) {
 		this.index = index;
 	}
 	/**
 	 * get the capacity in index detail
-	 * @return
+	 * @return capacity
 	 */
 	public int getCapacity() {
 		return capacity;
 	}
 	/**
 	 * set the capacity in index detail
-	 * @param capacity
+	 * @param capacity capacity
 	 */
 	public void setCapacity(int capacity) {
 		if (capacity < 0) {
@@ -94,7 +93,7 @@ public class IndexDetail implements Serializable   {
 	}
 	/**
 	 * get the currently enrolled in index detail
-	 * @return
+	 * @return currently enrolled
 	 */
 	public int getCurrentEnrolled() {
 		return currentEnrolled;
@@ -113,42 +112,42 @@ public class IndexDetail implements Serializable   {
 	}
 	/**
 	 * get lesson list from index detail
-	 * @return
+	 * @return lesson list
 	 */
 	public ArrayList<Lesson> getLessonList() {
 		return lessonList;
 	}
 	/**
 	 * set lesson list from index detail
-	 * @param lessonList
+	 * @param lessonList lesson list
 	 */
 	public void setLessonList(ArrayList<Lesson> lessonList) {
 		this.lessonList = lessonList;
 	}
 	/**
 	 * get wait list from index detail
-	 * @return
+	 * @return waitlist
 	 */
 	public ArrayList<String> getWaitList() {
 		return waitList;
 	}
 	/**
 	 * remove the first person in waitlist in index detail
-	 * @return
+	 * @return person from waitlist
 	 */
 	public String popIdOffWaitList() {
 		return this.waitList.remove(0);
 	}
 	/**
 	 * add a user into waitlist in index detail
-	 * @param loginID
+	 * @param loginID loginid
 	 */
 	public void addIdToWaitList(String loginID) {
 		this.waitList.add(loginID);
 	}
 	/**
 	 * Add a lesson into 
-	 * @param lesson
+	 * @param lesson lesson
 	 */
 	public void addLesson(Lesson lesson) {
 		lessonList.add(lesson);

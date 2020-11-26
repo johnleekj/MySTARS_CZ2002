@@ -34,7 +34,7 @@ public class Account implements Serializable  {
 	}
 	
 	/**
-	 * Formats the relavent details of the account to a custom string format:
+	 * Formats the relevant details of the account to a custom string format:
 	 * 
 	 * [Format]
 	 * Login ID :

@@ -3,7 +3,6 @@ package com.mySTARS.Boundary;
 import java.util.Scanner;
 
 import com.mySTARS.Control.AdminMgr;
-import com.mySTARS.Control.CourseMgr;
 import com.mySTARS.Control.SystemMgr;
 import com.mySTARS.Control.UpdateCourseMgr;
 import com.mySTARS.ENUMS.DAY;

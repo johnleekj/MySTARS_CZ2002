@@ -522,16 +522,12 @@ public class SystemBackend {
 			DAY day, String type, String group, String location, WEEK lessonWeeks, String remarks, String startTime, String endTime) {
 		
 		Lesson toAdd = new Lesson(day, type, group, location, lessonWeeks, remarks , startTime, endTime);
+		
 		ArrayList<Lesson> tempLessonList = new ArrayList<Lesson>();
 		tempLessonList.add(toAdd);
-		IndexDetail tempDetail = new IndexDetail(index, 10, tempLessonList, null);
-		if(!checkTimingClashes(getCourse(currentCourseCode).getIndexDetail(), tempDetail)) {
-			getCourse(currentCourseCode).addLesson(index, toAdd);
-			System.out.println(getCourse(currentCourseCode));
-		} else {
-			System.out.println("Timing clash with other lessons, lesson not added.");
-			System.out.println(getCourse(currentCourseCode));
-		}
+
+		getCourse(currentCourseCode).addLesson(index, toAdd);
+		System.out.println(getCourse(currentCourseCode));
 	}
 	
 	

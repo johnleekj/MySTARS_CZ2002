@@ -631,7 +631,6 @@ public class SystemBackend {
 					account.addToWaitList(detail.getIndex());
 					// Update IndexDetail class at the same time - adding to waitlist
 					detail.addIdToWaitList(account.getLoginID());
-					NotificationMgr.AddCourseToWaitList(account.getEmail(), index);
 				}
 			}
 		}
@@ -650,11 +649,8 @@ public class SystemBackend {
 			// Get respective account.
 			StudentAccount account = SystemBackend.StudentAccountMap.get(loginID);
 			account.moveWaitListToRegistered(index);
-			
-			// Perform notifications 
 			NotificationMgr.GetCourseFromWaitList(account.getEmail(), index);
-		}
-		
+		}		
 		
 	}
 	
@@ -729,7 +725,6 @@ public class SystemBackend {
 					account.dropFromCoursesRegistered(details.getIndex());
 					// Update index details for vacancy
 					details.subCurrentEnrolled();
-					NotificationMgr.SuccesfulDropCourse(account.getEmail(), index);
 				}
 			}
 		}
@@ -878,7 +873,6 @@ public class SystemBackend {
 	public static boolean changeIndex(int indexReadingOld, int indexReadingNew, StudentAccount account) {
 		SystemBackend.dropCourse(indexReadingOld, account);
 		SystemBackend.addCourseForStudent(indexReadingNew, account);
-		NotificationMgr.IndexChange(account.getEmail(), indexReadingOld, indexReadingNew);
 		return false;
 	}
 

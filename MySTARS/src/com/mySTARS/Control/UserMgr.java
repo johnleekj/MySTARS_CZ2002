@@ -67,6 +67,7 @@ public class UserMgr {
 				// Add to waitlist for student instead
 				SystemBackend.addCourseWaitListForStudent(index, account);
 				result = ("Course: " + incomingCourse.getCourseCode() + ". Index: " + index + " has no vacancy left. You will be placed on the waitList.");
+				NotificationMgr.AddCourseToWaitList(account.getEmail(),index);
 				return result;
 			} else {
 				SystemBackend.addCourseForStudent(index, account);
@@ -91,6 +92,7 @@ public class UserMgr {
 			result = "Course " + index + " dropped successfuly\n" + "Currently Registered Courses:\n" + getCoursesRegistered(account).toString();
 			// Check waitlist for currentCourse
 			SystemBackend.handlingPopOfWaitList(index);
+			NotificationMgr.SuccesfulDropCourse(account.getEmail(), index);
 			return result;
 		}
 		
@@ -121,6 +123,7 @@ public class UserMgr {
 		// add back either old index or new index
 		if (!yourClash) {
 			addCourse(indexReadingNew, account);
+			NotificationMgr.IndexChange(account.getEmail(), indexReadingOld, indexReadingNew);
 			result = "Index succesfully changed";
 		} else {
 			addCourse(indexReadingOld, account);
@@ -179,7 +182,9 @@ public class UserMgr {
 			
 		// Safe to perform swop
 		SystemBackend.changeIndex(yourIndex, otherIndex, yourAccount);
+		NotificationMgr.IndexChange(yourAccount.getEmail(), yourIndex, otherIndex);
 		SystemBackend.changeIndex(otherIndex, yourIndex, otherAccount);
+		NotificationMgr.IndexChange(otherAccount.getEmail(), otherIndex, yourIndex);
 		result = "Swapped " + yourIndex + " [" + yourAccount.getLoginID() + "] with " + otherIndex + " [" + otherAccount.getLoginID() + "]";
 		return result;	
 	}

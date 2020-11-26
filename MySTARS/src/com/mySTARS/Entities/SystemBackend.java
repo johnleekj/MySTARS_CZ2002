@@ -506,6 +506,7 @@ public class SystemBackend {
 		for (Course course : CourseMap.values()) {
 			if (course.getCourseCode().equals(currentCourseCode)) {
 				course.setSchoolName(updatedCourseSchool);
+				System.out.println("School succesfully changed");	
 			}
 		}
 	}
@@ -524,6 +525,7 @@ public class SystemBackend {
 		Lesson toAdd = new Lesson(day, type, group, location, lessonWeeks, remarks , startTime, endTime);
 		getCourse(currentCourseCode).addLesson(index, toAdd);
 		System.out.println(getCourse(currentCourseCode));
+		System.out.println("Lesson has been successfully added to the index number");	
 	}
 	
 	
@@ -816,6 +818,7 @@ public class SystemBackend {
 	// [[FROM BOUNDARY]
 	public static void removeCurrentCourseIndex(String currentCourseCode, int currentCourseIndex) {
 		getCourse(currentCourseCode).dropIndex(currentCourseIndex);	
+		System.out.println("Index number removed successfully");	
 	}
 	
 	// [Intermediate] 	// [[FROM BOUNDARY]

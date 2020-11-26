@@ -25,7 +25,7 @@ public class UserMgr {
 	/**
 	 * boolean value on whether a course can be found
 	 * @param index course index
-	 * @return
+	 * @return returns boolean value true / false
 	 */
 	public static boolean canFindCourse(int index) { 
 		Course tryGetCourse = SystemBackend.getCourse(index);
@@ -39,7 +39,7 @@ public class UserMgr {
 	 * add course into student account
 	 * @param index index of course to be added
 	 * @param account account that course will be added into
-	 * @return
+	 * @return returns course that is to be added
 	 */
 	public static String addCourse(int index, StudentAccount account) {
 		String result = null;
@@ -97,7 +97,7 @@ public class UserMgr {
 	 * drop course from student account
 	 * @param index index of course to be dropped
 	 * @param account account that course will be dropped from
-	 * @return
+	 * @return returns course that is dropped
 	 */
 	public static String dropCourse(int index, StudentAccount account) {
 		String result = null;
@@ -124,7 +124,7 @@ public class UserMgr {
 	 * @param indexReadingOld old index
 	 * @param indexReadingNew new index
 	 * @param account account that registerd course index will be changed in
-	 * @return
+	 * @return returns changed index
 	 */
 	public static String changeIndex(int indexReadingOld, int indexReadingNew, StudentAccount account) {
 		String result;
@@ -162,7 +162,7 @@ public class UserMgr {
 	/**
 	 * returns a string of courses registered for display
 	 * @param account account of registered courses we want to display
-	 * @return
+	 * @return returns courses registered by student
 	 */
 	public static String getCoursesRegistered(StudentAccount account) {
 		String string = SystemBackend.getCoursesRegisteredString(account);
@@ -175,7 +175,7 @@ public class UserMgr {
 	 * @param yourAccount account of student 1
 	 * @param username username of student 2 for verification
 	 * @param password password of student 2 for verification
-	 * @return
+	 * @return returns swapped index result
 	 */
 	public static String swopIndex(int yourIndex, int otherIndex, StudentAccount yourAccount, String username, String password) {
 		

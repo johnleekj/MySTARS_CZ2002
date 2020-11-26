@@ -9,13 +9,18 @@ public class GenericBoundary {
 	
 	public static int readIntInputFromUser() {
 		int sel;		
-		// Check if next input is integer
+		/**
+		* @param (while (!scanner.hasNextInt())) (Check if next input is an integer)
+		* @param (scanner.nextLine()) (Clears the input buffer)
+		*/
 		while (!scanner.hasNextInt()) {
 			System.out.println("Please enter a valid integer choice!");
-			scanner.nextLine(); // To clear input buffer.
+			scanner.nextLine();
 		}
-		// Read in integer into sel
-
+		 
+		/**
+		* @param (sel = scanner.nextInt()) (Read in integer into sel)
+		*/
 		sel = scanner.nextInt();
 		scanner.nextLine();
 		return sel;
@@ -36,13 +41,17 @@ public class GenericBoundary {
 	public static int readIntInputFromUser(String string) {
 		System.out.println(string);
 		int sel;		
-		// Check if next input is integer
+		/**
+		* @param (while (!scanner.hasNextInt())) (Check if next input is an integer)
+		*/
 		while (!scanner.hasNextInt()) {
 			System.out.println("Please enter a valid integer choice!");
 			scanner.nextLine(); // To clear input buffer.
 		}
-		// Read in integer into sel
-
+		
+		/**
+		* @param (sel = scanner.nextInt()) (Read in integer into sel)
+		*/
 		sel = scanner.nextInt();
 		scanner.nextLine();
 		return sel;
@@ -51,14 +60,18 @@ public class GenericBoundary {
 	public static int readPositiveIntInputFromUser(String string) {
 		System.out.println(string);
 		int sel;		
-		// Check if next input is integer
+		/**
+		* @param (while (!scanner.hasNextInt())) (Check if next input is an integer)
+		*/
 		do {
 			while (!scanner.hasNextInt()) {
 				System.out.println("Please enter a valid integer choice!");
 				scanner.nextLine(); // To clear input buffer.
 			}
-			// Read in integer into sel
-	
+			
+			/**
+			* @param (sel = scanner.nextInt()) (Read in integer into sel)
+			*/
 			sel = scanner.nextInt();
 			scanner.nextLine();
 			if (sel <= 0) {
@@ -83,7 +96,7 @@ public class GenericBoundary {
 			} 
 			System.out.println("Invalid school. Please enter again");
 		} while (querySchool == null);
-		return querySchool; // Dummy return will never reach
+		return querySchool;
 	}
 	
 	public static DAY readDay() {

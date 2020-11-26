@@ -2,11 +2,13 @@ package com.mySTARS.Control;
 
 import com.mySTARS.Boundary.*;
 import com.mySTARS.Entities.*;
-
+/**
+ * Manages account retrieval and backend checking.
+ */
 public class AccountMgr {
 	
-	/**
-	* @param Account retrieval is done here, checks against SystemBackend if the account is available
+	/*
+	* Account retrieval is done here, checks against SystemBackend if the account is available
 	*/
 	
 	/**

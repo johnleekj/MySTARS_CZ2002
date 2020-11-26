@@ -49,15 +49,10 @@ public class SystemBackend {
 
 	// Key, Object : courseCode, Course
 	public static Map<String, Course> CourseMap = new HashMap<>();
-<<<<<<< HEAD
-	
-	/**
-	 * uploads staff data into a hashmap
-=======
+
 
 	/**
 	 * Used to upload all the data that we have relevant to our staff
->>>>>>> branch 'master' of https://github.com/johnleekj/MySTARS_CZ2002.git
 	 */
 	public static void uploadStaffData() {
 		//		LOGIN_ID, HASH_PASSWORD, EMAIL, STAFF_ID, NAME, GENDER, NATIONALITY
@@ -78,14 +73,10 @@ public class SystemBackend {
 		StaffAccountMap.put(admin_account.getLoginID(), admin_account);
 		
 	}
-<<<<<<< HEAD
-	/**
-	 * Upload student data into a hashmap
-=======
+
 	
 	/**
 	 * Used to upload all the data that we have relevant to our students
->>>>>>> branch 'master' of https://github.com/johnleekj/MySTARS_CZ2002.git
 	 */
 	public static void uploadStudentData() {
 		//		LOGIN_ID, HASH_PASSWORD, EMAIL, STAFF_ID, NAME, GENDER, NATIONALITY
@@ -193,14 +184,9 @@ public class SystemBackend {
 		StudentAccountMap.put(ching_account.getLoginID(), ching_account);
 		StudentAccountMap.put(kevin_account.getLoginID(), kevin_account);
 	}
-<<<<<<< HEAD
-	/**
-	 * upload course data into a hashmap
-=======
 	
 	/**
 	 * Used to upload all the data that we have relevant to our courses
->>>>>>> branch 'master' of https://github.com/johnleekj/MySTARS_CZ2002.git
 	 */
 	public static void uploadCourseData() {
 		AdminMgr.addCourse("CZ2001", "ALGORITHM", 3, SCHOOL.SCSE);

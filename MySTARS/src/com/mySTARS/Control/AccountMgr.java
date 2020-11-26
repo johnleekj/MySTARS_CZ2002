@@ -12,8 +12,11 @@ public class AccountMgr {
 	*/
 	
 	/**
-	* @param Student account checked
-	*/
+	 * obtains student account from database
+	 * @param loginID login id of student
+	 * @param password password of student
+	 * @return returns a student account
+	 */
 	public static StudentAccount getStudentAccount(
 			String loginID, // Read in UPPERCASE
 			String password) {
@@ -23,8 +26,12 @@ public class AccountMgr {
 	}
 	
 	/**
-	* @param Staff account checked
-	*/
+	 * 
+	 * obtains staff account from database
+	 * @param loginID login id of staff
+	 * @param password password of staff
+	 * @return returns a staff account
+	 */
 	public static StaffAccount getStaffAccount(
 			String loginID, // Read in UPPERCASE
 			String password) {

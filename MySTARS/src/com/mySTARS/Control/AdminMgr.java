@@ -158,7 +158,7 @@ public class AdminMgr {
 	 * @return List of students by course name
 	 */
 	public static String getStudentList(String courseNameFilter) {
-		/**
+		/*
 		* Gets list of students from database in SystemBackend class, based on course
 		*/
 		String string = SystemBackend.getFormattedStudentListCourse(courseNameFilter);

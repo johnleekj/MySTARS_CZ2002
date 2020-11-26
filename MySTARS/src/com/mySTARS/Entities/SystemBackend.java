@@ -616,7 +616,6 @@ public class SystemBackend {
 					account.addToRegisteredCourse(detail.getIndex());
 					// Update IndexDetail class at the same time
 					detail.addCurrentEnrolled();
-					NotificationMgr.SuccessfulAddCourse(account.getEmail(), index);
 				}
 			}
 		}

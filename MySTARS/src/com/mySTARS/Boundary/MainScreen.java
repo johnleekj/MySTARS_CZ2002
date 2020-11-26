@@ -17,7 +17,7 @@ public class MainScreen {
 		// Use SystemBackEnd to load files
 		FileMgr.readAll();
 		// Start of Program (What users see)
-		System.out.println(	"[ Welcome to mySTARS ]");
+		System.out.println(	"[ Welcome to mySTARS! ]");
 		
 		int sel;
 		boolean quit = false;

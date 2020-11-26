@@ -70,7 +70,8 @@ public class UserMgr {
 				return result;
 			} else {
 				SystemBackend.addCourseForStudent(index, account);
-				result = ("Course: " + incomingCourse.getCourseCode() + ". Index: " + index + " added successfully.");
+				result = ("Course: " + incomingCourse.getCourseCode() + ". Index: " + index + " added successfully!");
+				NotificationMgr.SuccessfulAddCourse(account.getEmail(), index);
 				return result;
 			}		
 	}

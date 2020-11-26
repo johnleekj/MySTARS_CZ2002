@@ -178,4 +178,14 @@ public class GenericBoundary {
 		} while (queryWeek == null);
 		return queryWeek; // Dummy return will never reach
 	}
+	
+	public static String readStringInputUPPERnoInt(String onScreenMessage) {
+		System.out.print(onScreenMessage);
+		while (scanner.hasNextInt()) {
+			System.out.println("Please enter only strings");
+			scanner.nextLine();
+		}
+		String input = scanner.nextLine().trim().toUpperCase();
+		return input;
+	}
 }

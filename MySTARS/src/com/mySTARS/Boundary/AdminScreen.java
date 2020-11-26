@@ -81,8 +81,8 @@ public class AdminScreen {
 					* @param Here is where the name, gender, nationality, matricNo is read in as data to be part of student account
 					*/
 					name = GenericBoundary.readStringInputUPPER("Enter student name: ");
-					gender = GenericBoundary.readStringInputUPPER("Enter student gender: ");
-					nationality = GenericBoundary.readStringInputUPPER("Enter student nationality: ");
+					gender = GenericBoundary.readStringInputUPPERnoInt("Enter student gender: ");
+					nationality = GenericBoundary.readStringInputUPPERnoInt("Enter student nationality: ");
 					matricNo = GenericBoundary.readStringInputUPPER("Enter student matriculationNo: ");
 					
 					/**

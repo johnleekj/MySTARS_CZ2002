@@ -55,7 +55,7 @@ public class GenericBoundary {
 	}
 	/**
 	 * Reads integer input from user when users inputs a string
-	 * @param string
+	 * @param string string input
 	 * @return integer value
 	 */
 	public static int readIntInputFromUser(String string) {
@@ -78,7 +78,7 @@ public class GenericBoundary {
 	}
 	/**
 	 * Reads positive int input from user from a string
-	 * @param string
+	 * @param string string input
 	 * @return positive integer
 	 */
 	public static int readPositiveIntInputFromUser(String string) {

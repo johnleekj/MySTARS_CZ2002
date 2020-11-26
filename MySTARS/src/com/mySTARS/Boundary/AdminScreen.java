@@ -19,7 +19,7 @@ public class AdminScreen {
 	
 	/**
 	 * Logs admin account into system. Displays menu options for admin interactions.
-	 * @param staffAcc
+	 * @param staffAcc account of staff
 	 */
 	
 	public static void enterAdmin(StaffAccount staffAcc) {

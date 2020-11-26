@@ -3,8 +3,10 @@ package com.mySTARS.Control;
 public class NotificationMgr {
 	
 	/**
-	* @param Email notification that is sent to student once course has been successfully added
-	*/
+	 * Sending of notifications upon successful adding of course.
+	 * @param contact contact info of user
+	 * @param index index of course added
+	 */
 	public static void SuccessfulAddCourse(String contact, int index) {
 		System.out.println("Sending Notification");
 		String subject = "MySTARS Add Course";
@@ -14,8 +16,10 @@ public class NotificationMgr {
 	}
 	
 	/**
-	* @param Email notification that is sent to student once course has been successfully dropped
-	*/
+	 * Sending of notifications upon successful dropping of course
+	 * @param contact contact info of user
+	 * @param index index of course added
+	 */
 	public static void SuccesfulDropCourse(String contact, int index) {
 		System.out.println("Sending Notification");
 		String subject = "MySTARS Drop Course";
@@ -25,8 +29,11 @@ public class NotificationMgr {
 	}
 	
 	/**
-	* @param Email notification that is sent to student once index number has been successfully changed
-	*/
+	 * Sending of notifications upon successful index change
+	 * @param contact contact info of user
+	 * @param indexReadingOld index of old course
+	 * @param indexReadingNew index of new course
+	 */
 	public static void IndexChange(String contact, int indexReadingOld, int indexReadingNew) {
 		System.out.println("Sending Notification");
 		String subject = "MySTARS Change course";
@@ -36,8 +43,10 @@ public class NotificationMgr {
 	}
 
 	/**
-	* @param Email notification that is sent to student once course has been successfully assigned and student is removed from waitlist
-	*/
+	 * Sending of notifications upon successful addition of course from waitlist
+	 * @param contact contact info of user
+	 * @param index index of course added
+	 */
 	public static void GetCourseFromWaitList(String contact, int index) {
 		System.out.println("Sending Notification");
 		String subject = "MySTARS WaitList Update";
@@ -47,8 +56,10 @@ public class NotificationMgr {
 	}
 	
 	/**
-	* @param Email notification that is sent to student once student has been successfully added to waitlist for course
-	*/
+	 * Sending of notifications upon successful addition of course to waitlist
+	 * @param contact contact info of user
+	 * @param index index of course added
+	 */
 	public static void AddCourseToWaitList(String contact, int index) {
 		System.out.println("Sending Notification");
 		String subject = "MySTARS WaitList Update";

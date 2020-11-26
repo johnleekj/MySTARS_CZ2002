@@ -477,7 +477,13 @@ public class SystemBackend {
 	}
 	
 	// Admin case 1 (add course)
-	
+	/**
+	 * Method to check if the courseCode entered by user is valid and matches courseCode of course
+	 * 
+	 * @param courseList Array list holding all the courses in MySTARS
+	 * @param queryCourse Holds course that program is looking for 
+	 * @return Returns boolean value true / false
+	 */
 	public static boolean checkMatchingCourseCode(ArrayList<Course> courseList, Course queryCourse) {
 		for (Course course : courseList) {
 			if (course.getCourseCode().equalsIgnoreCase(queryCourse.getCourseCode())) {
@@ -488,7 +494,12 @@ public class SystemBackend {
 	}
 	
 	// Admin Case 2 (Made by StudentAccount)
-	
+	/**
+	 * Method to check for clash in courseCode
+	 * 
+	 * @param courseCode Holds courseCode of unique course
+	 * @return Returns boolean value true / false
+	 */
 	public static boolean checkCodeClash(String courseCode) {
 		if (CourseMap.containsKey(courseCode)) {
 			return true;
@@ -497,6 +508,12 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * Method to check if course exists according to coursecode
+	 * 
+	 * @param courseCode Holds courseCode of unique course
+	 * @return Returns boolean value true / false
+	 */
 	public static boolean checkCourseExist(String courseCode) {
 		for (Course course : CourseMap.values()) {
 			if (course.getCourseCode() == courseCode) {
@@ -513,7 +530,13 @@ public class SystemBackend {
 
 	
 	// Admin Case 4: Update Course
-	
+	/**
+	 * Method to update courseCode of existing course
+	 * 
+	 * @param oldCourseCode Holds old course code
+	 * @param updatedCourseCode Holds updated course code
+	 * @return 
+	 */
 	public static String updateCourseCode(String oldCourseCode, String updatedCourseCode) {
 		// check if name already exists
 		for (Course course: CourseMap.values()) {
@@ -543,7 +566,12 @@ public class SystemBackend {
 		return updatedCourseCode;
 	}
 	
-	
+	/**
+	 * Method to update school that course is registered under
+	 * 
+	 * @param currentCourseCode Holds courseCode of specific course
+	 * @param updatedCourseSchool Holds updated school name
+	 */
 	public static void updateCourseSchool(String currentCourseCode, SCHOOL updatedCourseSchool) {
 		for (Course course : CourseMap.values()) {
 			if (course.getCourseCode().equals(currentCourseCode)) {
@@ -553,6 +581,13 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * Method to update capacity of index number
+	 * 
+	 * @param currentCourseCode Holds courseCode of specific course
+	 * @param index Holds index number
+	 * @param updateValue Holds updated capacity of index number
+	 */
 	public static void updateIndexCapacity(String currentCourseCode, int index, int updateValue) {
 		for (IndexDetail details : getCourse(currentCourseCode).getIndexDetail()) {
 			if (details.getIndex() == index) {
@@ -561,6 +596,20 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * Method to add lesson to existing index
+	 * 
+	 * @param currentCourseCode Holds courseCode of specific course
+	 * @param index Holds index number
+	 * @param day Holds day in which lesson is held
+	 * @param type Holds type of lesson 
+	 * @param group Holds group code / name of lesson
+	 * @param location Holds lesson location
+	 * @param lessonWeeks Holds weeks that lesson is held on
+	 * @param remarks Holds additional remarks that admin user wants to tag to that course
+	 * @param startTime Holds start time of lesson
+	 * @param endTime Holds end time of lesson
+	 */
 	public static void addLessonToExistingIndex(String currentCourseCode, int index,
 			DAY day, String type, String group, String location, WEEK lessonWeeks, String remarks, String startTime, String endTime) {
 		
@@ -572,6 +621,12 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * Method to check whether login of student is correct
+	 * 
+	 * @param login Holds loginID of student
+	 * @return Returns boolean value true / false
+	 */
 	public static boolean checkLoginExist(String login) {
 		if (StudentAccountMap.containsKey(login)) {
 			return true;
@@ -582,6 +637,12 @@ public class SystemBackend {
 
 	
 	// [ADMIN AND USER]
+	/**
+	 * Method to get the vacancies of a particular index number
+	 * 
+	 * @param indexReading Holds vacancy of index number
+	 * @return Returns vacancy
+	 */
 	public static int getClassVacancies(int indexReading) {
 		int vacancies = -1;
 		for (Course course : CourseMap.values()) {
@@ -596,6 +657,12 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * Method to get student list according to index numbers
+	 * 
+	 * @param indexReading6 Holds index numbers
+	 * @return Returns student list
+	 */
 	public static String getFormattedStudentListIndex(int indexReading6) {
 		ArrayList<StudentAccount> collated = new ArrayList<StudentAccount>();
 		for (StudentAccount student : StudentAccountMap.values()) {
@@ -609,6 +676,12 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * Method to get student list according to course
+	 * 
+	 * @param courseNameFilter Holds courses
+	 * @return Returns student list
+	 */
 	public static String getFormattedStudentListCourse(String courseNameFilter) {
 		ArrayList<Integer> collatedIndexes = new ArrayList<Integer>();	
 		for (Course course : CourseMap.values()) {
@@ -634,6 +707,12 @@ public class SystemBackend {
 	}
 
 	// [ADMIN]
+	/**
+	 * Method to get all the student accounts and student details in the format of a String
+	 * 
+	 * @param collated Student account details collated
+	 * @return Return student accounts
+	 */
 	private static String customStringFormat1(ArrayList<StudentAccount> collated) {
 		StringBuilder sb = new StringBuilder();
 		int listCount = 1; // Increment by 1.
@@ -648,6 +727,12 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * Method to add course for a student
+	 * 
+	 * @param index Holds index numbers
+	 * @param account Holds student accounts
+	 */
 	public static void addCourseForStudent(int index, StudentAccount account) {
 		
 		// Confirm addition of courses
@@ -663,6 +748,12 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * Method to add courses to wait list for a student
+	 * 
+	 * @param index Holds index numbers
+	 * @param account Holds student accounts
+	 */
 	public static void addCourseWaitListForStudent(int index, StudentAccount account) {
 		
 		// Confirm addition of courses
@@ -678,6 +769,11 @@ public class SystemBackend {
 		}
 	}
 	
+	/**
+	 * Method to handle the popping off of a student from the wait list
+	 * 
+	 * @param index Holds index numbers
+	 */
 	public static void handlingPopOfWaitList(int index) {
 		// Get IndexDetail
 		IndexDetail detail = SystemBackend.getIndexDetails(index);
@@ -697,6 +793,13 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * Method to check if the timing of lesson in index numbers clash
+	 * 
+	 * @param currentIndexDetail Holds current lesson details
+	 * @param newIndexDetail Holds new lesson details
+	 * @return
+	 */
 	public static boolean checkTimingClashes(ArrayList<IndexDetail> currentIndexDetail, IndexDetail newIndexDetail) {
 		
 		// Check timing clashes 
@@ -713,6 +816,12 @@ public class SystemBackend {
 		return false;
 	}
 	
+	/**
+	 * Method to retrieve the list of courses by their index numbers
+	 * 
+	 * @param indexList Holds list of index numbers
+	 * @return Returns the course list
+	 */
 	public static ArrayList<Course> retrieveCourseListByIndexList(ArrayList<Integer> indexList){
 		ArrayList<Course> listOfCoursesTaken = new ArrayList<Course>();
 		for (Integer i : indexList) {
@@ -722,6 +831,13 @@ public class SystemBackend {
 		return listOfCoursesTaken;
 	}
 	
+	/**
+	 * Method to check if the index number exists under that particular course
+	 * 
+	 * @param course Holds course object
+	 * @param index Holds index numbers of course
+	 * @return Returns boolean value true / false
+	 */
 	public static boolean indexExistInCourse(Course course, int index) {
 		for (IndexDetail details : course.getIndexDetail()) {
 			if (details.getIndex() == index) {
@@ -731,6 +847,13 @@ public class SystemBackend {
 		return false;
 	}
 	
+	/**
+	 * Method to check if the timing of the index numbers clash, between the index number that user input and the index number of existing courses
+	 * 
+	 * @param indexList Holds the list of index numbers
+	 * @param index Holds the index numbers
+	 * @return Returns the boolean value true / false
+	 */
 	public static boolean checkTimingClashes(ArrayList<Integer> indexList, int index) {
 		// Check timing clashes 
 		IndexDetail incomingIndexDetail = null; 
@@ -755,7 +878,13 @@ public class SystemBackend {
 		return clash;
 	}
 
-		// [USER]
+	// [USER]
+	/**
+	 * Method to drop course from student timetable
+	 * 
+	 * @param index Holds index numbers
+	 * @param account Holds student account
+	 */
 	public static void dropCourse(int index, StudentAccount account) {
 		// get course code from index number
 		int capacity;
@@ -774,6 +903,12 @@ public class SystemBackend {
 	
 	
 	// [USER]
+	/**
+	 * Method to generate the courses that a student has been registered for
+	 *  
+	 * @param courseList Holds the list of courses
+	 * @return Returns the list of registered courses
+	 */
 	private static String generateCourseRegisteredString(ArrayList<IndexDetail> courseList) {
 		StringBuilder sb = new StringBuilder();
 		int listCount = 1; // Increment by 1.
@@ -786,6 +921,12 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * Method to get the indexes that the students are registered for
+	 * 
+	 * @param account Holds student account
+	 * @return Returns the list of indexes that student is in
+	 */
 	private static ArrayList<IndexDetail> getStudentIndexList(StudentAccount account) {
 		// Get the corresponding (currently registered) index details for comparison
 		ArrayList<Integer> currentIndexes= account.getListCoursesRegistered();
@@ -803,6 +944,12 @@ public class SystemBackend {
 		return currentIndexDetail;
 	}
 		// [USER]
+		/**
+		 * Method that gets list of students according to courses
+		 * 
+		 * @param account Holds student account
+		 * @return Returns the student list
+		 */
 		private static ArrayList<IndexDetail> getStudentCourseList(StudentAccount account) {
 			// Get the corresponding (currently registered) index details for comparison
 			ArrayList<Integer> currentIndexes= account.getListCoursesRegistered();
@@ -822,7 +969,13 @@ public class SystemBackend {
 
 	}
 		
-		// [USER]
+	// [USER]
+	/**
+	 * Method to get courses that are registered in String format
+	 * 
+	 * @param account Holds student account
+	 * @return Returns the list of courses that student is registered for
+	 */
 	public static String getCoursesRegisteredString(StudentAccount account) {
 		ArrayList<IndexDetail> currentCourseDetails = getStudentCourseList(account);
 		String output = generateCourseRegisteredString(currentCourseDetails);		
@@ -830,6 +983,12 @@ public class SystemBackend {
 	}
 	
 	// [USER]
+	/**
+	 * Method to get information of a particular index
+	 * 
+	 * @param yourIndex Holds the index number
+	 * @return Returns index number information
+	 */
 	public static IndexDetail getIndexDetails(int yourIndex) {
 		IndexDetail temp = null;
 		for (Course course: CourseMap.values()) {
@@ -843,12 +1002,24 @@ public class SystemBackend {
 	}
 	
 	// [ADMIN]
+	/**
+	 * Method to add student accounts to database above
+	 * 
+	 * @param account Holds student accounts
+	 */
 	public static void addStudentAccounts(StudentAccount account) {
 		StudentAccountMap.put(account.getLoginID().toUpperCase(), account);
 		
 	}
 
 	// [FROM BOUNDARY]
+	/**
+	 * Method to add new course index to existing course
+	 * 
+	 * @param currentCourseCode Holds course code of course
+	 * @param newCourseIndex Holds new index number of course
+	 * @param capacity Holds capacity of index number
+	 */
 	public static void addNewCourseIndex(String currentCourseCode, int newCourseIndex, int capacity) {
 		Course retreivedCourse = getCourse(currentCourseCode);
 		retreivedCourse.addNewIndexDetail(newCourseIndex, capacity);
@@ -856,12 +1027,24 @@ public class SystemBackend {
 	}
 	
 	// [[FROM BOUNDARY]
+	/**
+	 * Method to remove the current index number from the course
+	 * 
+	 * @param currentCourseCode Holds course code
+	 * @param currentCourseIndex Holds index number
+	 */
 	public static void removeCurrentCourseIndex(String currentCourseCode, int currentCourseIndex) {
 		getCourse(currentCourseCode).dropIndex(currentCourseIndex);	
 		System.out.println("Index number removed successfully");	
 	}
 	
 	// [Intermediate] 	// [[FROM BOUNDARY]
+	/**
+	 * Method to get course based on course code
+	 * 
+	 * @param courseCode Holds course code
+	 * @return Returns course that is tagged to that course code
+	 */
 	public static Course getCourse(String courseCode) {
 		Course temp = null;
 		Collection<Course> courseList = CourseMap.values();
@@ -874,6 +1057,12 @@ public class SystemBackend {
 	}
 
 	// [Intermediate] 	// [[FROM BOUNDARY]
+	/**
+	 * Method to get course based on index number
+	 * 
+	 * @param index Holds index number 
+	 * @return Returns the course tagged to that index number
+	 */
 	public static Course getCourse(int index) {
 		Course temp = null;
 		Collection<Course> courseList = CourseMap.values();
@@ -888,6 +1077,13 @@ public class SystemBackend {
 	}
 	
 	// [Checks] 	// [[FROM BOUNDARY]
+	/**
+	 * Method to check if user input index number clashes with index number for existing course
+	 * 
+	 * @param currentCourseCode Holds course code
+	 * @param newCourseIndex Holds new index number of course
+	 * @return Returns boolean value true / false
+	 */
 	public static boolean ifIndexClash(String currentCourseCode, int newCourseIndex) {
 		Collection<Course> courseList = CourseMap.values();
 		for (Course course : courseList) {
@@ -900,6 +1096,11 @@ public class SystemBackend {
 		return false;
 	}
 
+	/**
+	 * Method to get the entire list of courses
+	 * 
+	 * @return Returns course list
+	 */
 	public static String getGeneralCourseList() {
 		StringBuilder sb = new StringBuilder();
 		for  (Course course : CourseMap.values()) {
@@ -913,6 +1114,14 @@ public class SystemBackend {
 		return sb.toString();
 	}
 
+	/**
+	 * Method to check if index number for student is changed, specifically referring to the index number that they have registered for in their timetable
+	 * 
+	 * @param indexReadingOld Holds old index number that they previously registered for
+	 * @param indexReadingNew Holds new index number that they want to change to
+	 * @param account Holds student account
+	 * @return Returns boolean value true / false
+	 */
 	public static boolean changeIndex(int indexReadingOld, int indexReadingNew, StudentAccount account) {
 		SystemBackend.dropCourse(indexReadingOld, account);
 		SystemBackend.addCourseForStudent(indexReadingNew, account);

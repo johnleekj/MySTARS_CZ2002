@@ -13,7 +13,7 @@ public class UserScreen {
 	
 	/**
 	 * Logs student account into system. Displays menu options for student interactions.
-	 * @param studentAccount
+	 * @param studentAccount Student account required to access student interactions
 	 */
 	public static void enterStudent(StudentAccount studentAccount) {
 		int sel;

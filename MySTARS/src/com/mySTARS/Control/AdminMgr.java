@@ -10,7 +10,10 @@ import com.mySTARS.Entities.IndexDetail;
 import com.mySTARS.Entities.StaffAccount;
 import com.mySTARS.Entities.StudentAccount;
 import com.mySTARS.Entities.SystemBackend;
-
+/**
+ * Admin manager class that handling of Admin objects
+ *
+ */
 public class AdminMgr {
 
 	/**
@@ -27,14 +30,14 @@ public class AdminMgr {
 			String matricNo
 			) {
 
-		/**
-		* @param (if (adminAccount.isAdmin())) (Checks if the user has admin rights)
+		/*
+		* (if (adminAccount.isAdmin())) (Checks if the user has admin rights)
 		*/
 		System.out.println(adminAccount.getAccountRights());
 		if (adminAccount.isAdmin()) {
-			/**
-			* @param (StudentAccount.makeAccount()) (Loads new student data using StudentAccount class)
-			* @param (SystemBackend.addStudentAccounts(account)) (Adds data into database stored in SystemBackend class)
+			/*
+			* (StudentAccount.makeAccount()) (Loads new student data using StudentAccount class)
+			* (SystemBackend.addStudentAccounts(account)) (Adds data into database stored in SystemBackend class)
 			*/
 			StudentAccount account = StudentAccount.makeAccount(login, password, email, name, gender, nationality, matricNo);
 			SystemBackend.addStudentAccounts(account);
@@ -42,83 +45,121 @@ public class AdminMgr {
 			System.out.println("Error! You do not have admin rights to insert account!");
 		}
 	}
-
+	
+	/**
+	 * method to add courses to the database of courses
+	 * @param courseCode course code to add
+	 * @param courseName course name to add
+	 * @param courseUnits course units to add
+	 * @param schoolName course school name to add
+	 * @return integer value that indicates success of action
+	 */
 	public static int addCourse(
 			String courseCode,
 			String courseName,
 			int courseUnits,
 			SCHOOL schoolName) {
-		/**
-		* @param (if (SystemBackend.checkCourseExist(courseCode))) (Checks if the course exists based on whether the courseCode is available in SystemBackend database)
+		/*
+		* (if (SystemBackend.checkCourseExist(courseCode))) (Checks if the course exists based on whether the courseCode is available in SystemBackend database)
 		*/
 		if (SystemBackend.checkCourseExist(courseCode)) {
 			return -1;
 		}
-		/**
-		* @param (Course.makeCourse()) (Loads new course data using Course class)
-		* @param (SystemBackend.addCourse(newCourse)) (Adds data into database stored in SystemBackend class)
+		/*
+		* (Course.makeCourse()) (Loads new course data using Course class)
+		* (SystemBackend.addCourse(newCourse)) (Adds data into database stored in SystemBackend class)
 		*/
 		Course newCourse = Course.makeCourse(courseCode, courseName, courseUnits, schoolName, new ArrayList<IndexDetail>());
 		SystemBackend.addCourse(newCourse);
 		return 0;
 	}
-	
+	/**
+	 *	method to drop courses to the database of courses
+	 * @param courseCode course code to add
+	 * @param courseName course name to add
+	 * @param courseUnits course units to add
+	 * @param schoolName course school name to add
+	 * @return integer value that indicates success of action
+	 */
 	public static int updateCourse(
 			String courseCode,
 			String courseName,
 			int courseUnits,
 			SCHOOL schoolName) {
-		/**
-		* @param (if (!SystemBackend.checkCourseExist(courseCode))) (Checks if the course exists based on whether the courseCode is available in SystemBackend database)
+		/*
+		* (if (!SystemBackend.checkCourseExist(courseCode))) (Checks if the course exists based on whether the courseCode is available in SystemBackend database)
 		*/
 		if (!SystemBackend.checkCourseExist(courseCode)) {
 			return -1;
 		}
 		return 0;
 	}
-
+	/**
+	 * Brings admin to changes menu if admin chooses to update course, option 4 of admin display screen
+	 * @param staffAcc admin account required to access update course interactions
+	 */
 	public static void enterUpdateScreen(StaffAccount staffAcc) {
-		/**
-		* @param Brings admin to changes menu if admin chooses to update course, option 4 of admin display screen
+		/*
+		* Brings admin to changes menu if admin chooses to update course, option 4 of admin display screen
 		*/
 		UpdateCourseScreen.enterUpdateScreen(staffAcc);
 	}
-
+	/**
+	 * Checks against SystemBackend if the login done by user is valid
+	 * @param login login by the user
+	 * @return
+	 */
 	public static boolean ifLoginClash(String login) {
-		/**
-		* @param Checks against SystemBackend if the login done by user is valid
+		/*
+		* Checks against SystemBackend if the login done by user is valid
 		*/
 		boolean exist = SystemBackend.checkLoginExist(login);
 		return exist;
 	}
-
+	/**
+	 * Checks against SystemBackend if the course is valid
+	 * @param courseCode course code to be checked
+	 * @return boolean that indicates if there is a clash
+	 */
 	public static boolean ifCourseCodeClash(String courseCode) {
-		/**
-		* @param Checks against SystemBackend if the course is valid
+		/*
+		* Checks against SystemBackend if the course is valid
 		*/
 		boolean hasClash = SystemBackend.checkCodeClash(courseCode);
 		return hasClash;
 	}
-
+	/**
+	 * Checks with SystemBackend class for index number vacancies
+	 * @param indexReading index of course which vacancies are to be checked
+	 * @return integer value of how many vacancies there are
+	 */
 	public static int checkVacancies(int indexReading) {
-		/**
-		* @param Checks with SystemBackend class for index number vacancies
+		/*
+		* Checks with SystemBackend class for index number vacancies
 		*/
 		int vacancies = SystemBackend.getClassVacancies(indexReading);
 		return vacancies;
 	}
-
+	/**
+	 * Gets list of students from database in SystemBackend class, based on index number
+	 * @param indexReading6 index of course to check students enrolled
+	 * @return List of students by index
+	 */
 	public static String getStudentList(int indexReading6) {
-		/**
-		* @param Gets list of students from database in SystemBackend class, based on index number
+		/*
+		* Gets list of students from database in SystemBackend class, based on index number
 		*/
 		String string = SystemBackend.getFormattedStudentListIndex(indexReading6);
 		return string;
 	}
-
+	/**
+	 * Gets list of students from database in SystemBackend class, based on course
+	 * @param courseNameFilter
+	 * @return List of students by course name
+	 */
 	public static String getStudentList(String courseNameFilter) {
 		/**
-		* @param Gets list of students from database in SystemBackend class, based on course
+		* Gets list of students from database in SystemBackend class, based on course
 		*/
 		String string = SystemBackend.getFormattedStudentListCourse(courseNameFilter);
 		return string;

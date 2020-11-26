@@ -100,14 +100,38 @@ public class GenericBoundary {
 	}
 	
 	public static DAY readDay() {
-		
+		int sel;
 		DAY queryDay = null;
 		do {
-			System.out.print("Please enter day: ");
-			String school = scanner.nextLine().trim();
+			sel = GenericBoundary.readIntInputFromUser("Please select a day: \n"
+					+ "1: Monday\n"
+					+ "2: Tuesday\n"
+					+ "3: Wednesday\n"
+					+ "4: Thursday\n"
+					+ "5: Friday\n");
+			String day = null;
+			switch (sel) {
+			case 1:
+				day = "MON";
+				break;
+			case 2:
+				day = "TUE";
+				break;
+			case 3:
+				day = "WED";
+				break;
+			case 4:
+				day = "THU";
+				break;
+			case 5:
+				day = "FRI";
+				break;
+			default:
+				System.out.println("Invalid input, please try again");
+			}
 			
 			for (DAY currentEnum : DAY.values()) {
-				if (currentEnum.toString().equalsIgnoreCase(school)) {
+				if (currentEnum.toString().equalsIgnoreCase(day)) {
 					queryDay = currentEnum;
 					return queryDay;
 				}

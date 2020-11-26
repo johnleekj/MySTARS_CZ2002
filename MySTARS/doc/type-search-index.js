@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"com.mySTARS.Boundary","l":"AdminScreen"},{"l":"All Classes","url":"allclasses-index.html"}]

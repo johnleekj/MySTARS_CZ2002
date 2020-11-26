@@ -13,11 +13,17 @@ public class FileMgr {
 			Scanner scStream = new Scanner(new File(fileName));
 			String inputLine;
 			System.out.println("The file contains: ");
+			/**
+	    	* @param (scStream.nextLine()) (Used to skip to next line if there is no input in the file)
+	    	*/
 			if (scStream.hasNext()) {
-				scStream.nextLine(); // used to skip to next line if there is no input in the file
+				scStream.nextLine();  
 			}
+			/**
+	    	* @param (inputLine) (Whatever that is read in is to be used in the system)
+	    	*/
 			while(scStream.hasNext()) {
-				inputLine = scStream.nextLine(); // to be used in the system
+				inputLine = scStream.nextLine(); 
 				System.out.println(inputLine);
 			}
 			scStream.close();

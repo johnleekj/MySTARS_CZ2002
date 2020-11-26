@@ -94,7 +94,7 @@ public class GenericBoundary {
 					return querySchool;
 				}
 			} 
-			System.out.println("Invalid school. Please enter again");
+			System.out.println("Invalid school. Please try again");
 		} while (querySchool == null);
 		return querySchool;
 	}
@@ -110,25 +110,28 @@ public class GenericBoundary {
 					+ "4: Thursday\n"
 					+ "5: Friday\n");
 			String day = null;
-			switch (sel) {
-			case 1:
-				day = "MON";
-				break;
-			case 2:
-				day = "TUE";
-				break;
-			case 3:
-				day = "WED";
-				break;
-			case 4:
-				day = "THU";
-				break;
-			case 5:
-				day = "FRI";
-				break;
-			default:
-				System.out.println("Invalid input, please try again");
-			}
+			do {
+				switch (sel) {
+					case 1:
+						day = "MON";
+						break;
+					case 2:
+						day = "TUE";
+						break;
+					case 3:
+						day = "WED";
+						break;
+					case 4:
+						day = "THU";
+						break;
+					case 5:
+						day = "FRI";
+						break;
+					default:
+						System.out.println("Invalid input, please try again");
+				}
+			} while (day.equals(null));
+			
 			
 			for (DAY currentEnum : DAY.values()) {
 				if (currentEnum.toString().equalsIgnoreCase(day)) {
@@ -141,13 +144,33 @@ public class GenericBoundary {
 	}
 	
 	public static WEEK readWeek() {
+		int sel;
 		WEEK queryWeek = null;
 		do {
-			System.out.print("Please enter week type (odd, even, both): ");
-			String school = scanner.nextLine().trim();
+			sel = GenericBoundary.readIntInputFromUser("Please select a day: \n"
+					+ "1: Even\n"
+					+ "2: Odd\n"
+					+ "3: Both\n");
+			String week = null;
+			do {
+				switch (sel) {
+					case 1:
+						week = "EVEN";
+						break;
+					case 2:
+						week = "ODD";
+						break;
+					case 3:
+						week = "BOTH";
+						break;
+					default:
+						System.out.println("Invalid input, please try again");
+					}
+			} while (week.equals(null));
+			
 			
 			for (WEEK currentEnum : WEEK.values()) {
-				if (currentEnum.toString().equalsIgnoreCase(school)) {
+				if (currentEnum.toString().equalsIgnoreCase(week)) {
 					queryWeek = currentEnum;
 					return queryWeek;
 				}

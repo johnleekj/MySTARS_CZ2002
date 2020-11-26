@@ -5,9 +5,13 @@ import com.mySTARS.Entities.*;
 
 public class AccountMgr {
 	
-	// Account Retrieval: Check if account is valid or not in the SystemBackend
+	/**
+	* @param Account retrieval is done here, checks against SystemBackend if the account is available
+	*/
 	
-	// For student
+	/**
+	* @param Student account checked
+	*/
 	public static StudentAccount getStudentAccount(
 			String loginID, // Read in UPPERCASE
 			String password) {
@@ -16,7 +20,9 @@ public class AccountMgr {
 		return temp;
 	}
 	
-	// For staff
+	/**
+	* @param Staff account checked
+	*/
 	public static StaffAccount getStaffAccount(
 			String loginID, // Read in UPPERCASE
 			String password) {

@@ -7,15 +7,20 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-
+/**
+ * Main screen to run program
+ */
 public class MainScreen {
 	
 	public static Scanner scanner = new Scanner(System.in);
-
+	/**
+	 * Run the program
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		/**
-		* @param (FileMgr.readAll()) (SystemBackEnd to load files)
-		* @param (System.out.println("[ Welcome to mySTARS! ]")) (Start of Program - What users see)
+		/*
+		* (FileMgr.readAll()) (SystemBackEnd to load files)
+		* (System.out.println("[ Welcome to mySTARS! ]")) (Start of Program - What users see)
 		*/
 		FileMgr.readAll();
 		System.out.println(	"[ Welcome to mySTARS! ]");
@@ -29,21 +34,21 @@ public class MainScreen {
 			String password;
 			switch (sel) {
 				case 1:
-					/**
-					* @param Student login
+					/*
+					* Student login
 					*/
 					System.out.println(	"[ Student Login ]");
 					username = EncryptionMgr.readUsername();
-					/**
-					* @param (password = readPassword()) (reading in the password that user inputs)
+					/*
+					* (password = readPassword()) (reading in the password that user inputs)
 					*/
 					password = EncryptionMgr.readPassword();
 					StudentAccount studentAccount = AccountMgr.getStudentAccount(username, password);
 					if (studentAccount == null) {
 						continue;
 					}
-					/**
-					* @param (boolean canAccess = false) (If the student account does not exist, entry is refused)
+					/*
+					* (boolean canAccess = false) (If the student account does not exist, entry is refused)
 					*/
 					boolean canAccess = false;
 					try {
@@ -51,8 +56,8 @@ public class MainScreen {
 					} catch (ParseException e) {
 						System.out.println("Parse Error! Check time format");
 					}
-					/**
-					* @param (SystemMgr.getAccessDate()) (If the login is successful, the current time is checked against the access period that is allowed by admin)
+					/*
+					* (SystemMgr.getAccessDate()) (If the login is successful, the current time is checked against the access period that is allowed by admin)
 					*/
 					if (canAccess) {
 						SystemMgr.enterUser(studentAccount);
@@ -64,18 +69,18 @@ public class MainScreen {
 										
 					break;
 				case 2:
-					/**
-					* @param Staff login
+					/*
+					* Staff login
 					*/
 					System.out.println(	"[ Staff Login ]");
-					/**
-					* @param (password = readPassword()) (reading in the password that user inputs)
+					/*
+					* (password = readPassword()) (reading in the password that user inputs)
 					*/
 					username = EncryptionMgr.readUsername();
 					password = EncryptionMgr.readPassword();
 					StaffAccount staffAccount = AccountMgr.getStaffAccount(username, password);
-					/**
-					* @param (staffAccount == null) (If the staff account does not exist, entry is refused)
+					/*
+					* (staffAccount == null) (If the staff account does not exist, entry is refused)
 					*/
 					if (staffAccount == null) {
 						continue;
@@ -83,13 +88,13 @@ public class MainScreen {
 					SystemMgr.enterAdmin(staffAccount);
 					break;
 				case 3:
-					/**
-					* @param To exit program
+					/*
+					* To exit program
 					*/
 					System.out.println("Updating changes to databases...");
 					System.out.println("Thank you for using mySTARS!");
-					/**
-					* @param (FileMgr.saveAll();) (Saving of file is carried out here)
+					/*
+					* (FileMgr.saveAll();) (Saving of file is carried out here)
 					*/
 					FileMgr.saveAll();
 					System.out.println("Done!");
@@ -97,18 +102,20 @@ public class MainScreen {
 					quit = true;
 					break;
 				default:
-					/**
-					* @param Default case that is activated should the user input not be an integer type within the given cases
+					/*
+					* Default case that is activated should the user input not be an integer type within the given cases
 					*/
 					System.out.println("Invalid input, try again");
 				}
 		} while (!quit);
 		
 	}
-	
+	/**
+	 * Main Menu that users see upon entering MySTARS
+	 */
 	public static void printMenuOptions() {
-		/**
-		* @param Main Menu that users see upon entering MySTARS
+		/*
+		* Main Menu that users see upon entering MySTARS
 		*/
 		System.out.println("Please make your choice:");
 		System.out.println("1. Student Login");

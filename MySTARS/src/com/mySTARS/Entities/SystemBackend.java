@@ -44,6 +44,7 @@ public class SystemBackend {
 	// Key, Object : courseCode, Course
 	public static Map<String, Course> CourseMap = new HashMap<>();
 
+
 	/**
 	 * Used to upload all the data that we have relevant to our staff
 	 */
@@ -66,6 +67,7 @@ public class SystemBackend {
 		StaffAccountMap.put(admin_account.getLoginID(), admin_account);
 		
 	}
+
 	
 	/**
 	 * Used to upload all the data that we have relevant to our students
@@ -467,6 +469,7 @@ public class SystemBackend {
 		accessDateEnd = endAccess;
 	}
 
+
 	/**
 	 * Method to get the access date that students can access MySTARS
 	 * 
@@ -522,7 +525,10 @@ public class SystemBackend {
 		}
 		return false;
 	}
-
+	/**
+	 * add a course into the backend data
+	 * @param newCourse
+	 */
 	public static void addCourse(Course newCourse) {
 		CourseMap.put(newCourse.getCourseCode().toUpperCase(), newCourse);
 	}
@@ -768,7 +774,7 @@ public class SystemBackend {
 			}
 		}
 	}
-	
+
 	/**
 	 * Method to handle the popping off of a student from the wait list
 	 * 
@@ -815,7 +821,7 @@ public class SystemBackend {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Method to retrieve the list of courses by their index numbers
 	 * 

@@ -23,15 +23,9 @@ import com.mySTARS.ENUMS.WEEK;
 import com.mySTARS.ENUMS.DAY;
 
 /**
-<<<<<<< HEAD
- * Holds the data in the backend of the system
- * @author user
- *
-=======
  * SystemBackend class acts like a database for us, holding all our
  * temporary data and carrying out and handling the implementation
  * for most of our code
->>>>>>> branch 'master' of https://github.com/johnleekj/MySTARS_CZ2002.git
  */
 public class SystemBackend {
 

@@ -13,10 +13,11 @@ public class MainScreen {
 	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		
-		// Use SystemBackEnd to load files
+		/**
+		* @param (FileMgr.readAll()) (SystemBackEnd to load files)
+		* @param (System.out.println("[ Welcome to mySTARS! ]")) (Start of Program - What users see)
+		*/
 		FileMgr.readAll();
-		// Start of Program (What users see)
 		System.out.println(	"[ Welcome to mySTARS! ]");
 		
 		int sel;
@@ -28,21 +29,31 @@ public class MainScreen {
 			String password;
 			switch (sel) {
 				case 1:
+					/**
+					* @param Student login
+					*/
 					System.out.println(	"[ Student Login ]");
 					username = EncryptionMgr.readUsername();
-//					password = readPassword();
-//					Below method for password masking, use only in final version
+					/**
+					* @param (password = readPassword()) (reading in the password that user inputs)
+					*/
 					password = EncryptionMgr.readPassword();
 					StudentAccount studentAccount = AccountMgr.getStudentAccount(username, password);
 					if (studentAccount == null) {
 						continue;
 					}
+					/**
+					* @param (boolean canAccess = false) (If the student account does not exist, entry is refused)
+					*/
 					boolean canAccess = false;
 					try {
 						canAccess = SystemMgr.getAccess();
 					} catch (ParseException e) {
 						System.out.println("Parse Error! Check time format");
 					}
+					/**
+					* @param (SystemMgr.getAccessDate()) (If the login is successful, the current time is checked against the access period that is allowed by admin)
+					*/
 					if (canAccess) {
 						SystemMgr.enterUser(studentAccount);
 					} else {
@@ -53,25 +64,41 @@ public class MainScreen {
 										
 					break;
 				case 2:
+					/**
+					* @param Staff login
+					*/
 					System.out.println(	"[ Staff Login ]");
+					/**
+					* @param (password = readPassword()) (reading in the password that user inputs)
+					*/
 					username = EncryptionMgr.readUsername();
 					password = EncryptionMgr.readPassword();
 					StaffAccount staffAccount = AccountMgr.getStaffAccount(username, password);
+					/**
+					* @param (staffAccount == null) (If the staff account does not exist, entry is refused)
+					*/
 					if (staffAccount == null) {
 						continue;
 					}
 					SystemMgr.enterAdmin(staffAccount);
 					break;
 				case 3:
+					/**
+					* @param To exit program
+					*/
 					System.out.println("Updating changes to databases...");
 					System.out.println("Thank you for using mySTARS!");
-					// Perform saving of file here.
-//					FileMgr.saveAll();
+					/**
+					* @param (FileMgr.saveAll();) (Saving of file is carried out here)
+					*/
 					System.out.println("Done!");
 					System.out.println("Quiting mySTARS now...");
 					quit = true;
 					break;
 				default:
+					/**
+					* @param Default case that is activated should the user input not be an integer type within the given cases
+					*/
 					System.out.println("Invalid input, try again");
 				}
 		} while (!quit);
@@ -79,24 +106,12 @@ public class MainScreen {
 	}
 	
 	public static void printMenuOptions() {
+		/**
+		* @param Main Menu that users see upon entering MySTARS
+		*/
 		System.out.println("Please make your choice:");
 		System.out.println("1. Student Login");
 		System.out.println("2. Staff Login");
 		System.out.println("3. Quit");
 	}
-	
-	
-//	public static String readUsername() {
-//	System.out.println("Enter username:");
-//	String username = scanner.nextLine().trim().toUpperCase();
-//	return username;
-//	}
-//
-//	public static String readPassword() {
-//	System.out.println("Enter password:");
-//	String password = scanner.nextLine().trim();
-//	return password;
-//	}
-	
-	
 }

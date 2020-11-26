@@ -8,8 +8,10 @@ import com.mySTARS.Boundary.GenericBoundary;
 
 public class EncryptionMgr {
 
+	/**
+	* @param This EncryptionMgr class is what is used to mask the passwords that user inputs
+	*/
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println(hashPassword("hi"));
 		passwordMask();
 	}

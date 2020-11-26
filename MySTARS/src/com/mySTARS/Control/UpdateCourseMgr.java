@@ -27,8 +27,8 @@ public class UpdateCourseMgr {
 		SystemBackend.updateIndexCapacity(currentCourseCode, currentCourseIndex5, updateValue);
 	}
 
-	public static void addLessonToIndex(String currentCourseCode, int indexNumber, DAY day, String endTime,
-			String endTime2, String endTime3, WEEK lessonWeeks, String endTime4, String endTime5, String endTime6) {
-		SystemBackend.addLessonToExistingIndex(currentCourseCode, indexNumber, day, endTime, endTime, endTime, lessonWeeks, endTime, endTime, endTime);		
+	public static void addLessonToIndex(String currentCourseCode, int index,
+			DAY day, String type, String group, String location, WEEK lessonWeeks, String remarks, String startTime, String endTime) {
+		SystemBackend.addLessonToExistingIndex(currentCourseCode, index, day, endTime, endTime, endTime, lessonWeeks, endTime, endTime, endTime);		
 	}	
 }

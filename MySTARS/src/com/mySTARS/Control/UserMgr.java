@@ -98,35 +98,36 @@ public class UserMgr {
 	
 	public static String changeIndex(int indexReadingOld, int indexReadingNew, StudentAccount account) {
 		String result;
-		return result = "Sorry the change index method has not been implemented.";
-//		
+//		return result = "Sorry the change index method has not been implemented.";
+		
 //		// Check if both indexes are valid
-//		Course yourCourse = SystemBackend.getCourse(yourIndex);
-//		Course otherStudentCourse = SystemBackend.getCourse(otherIndex);
-//		if ((yourCourse == null ) || (otherStudentCourse == null)) {
-//			result = "Error. Please enter a valid index";
-//			return result;
-//		} else if (!yourCourse.getCourseCode().equalsIgnoreCase(otherStudentCourse.getCourseCode())) {
-//			result = "Courses are not the same! Please enter the correct indexes";
-//			return result;
-//		}
-//
-//		// Check if both taking index
-//		if (!(account.isTakingCourse(yourIndex)) || !(otherAccount.isTakingCourse(otherIndex))) {
-//			result = "Error. Please ensure that both swappeers takes the specified index";
-//		}
-//
-//		
-//		
-//		
-//		boolean successSwap = {
-//				if(successSwap) {
-//					System.out.println("index " + indexReadingOld + " successfully changed with " + indexReadingNew);
-//				}
-//		
-//				= SystemBackend.changeIndex(indexReadingOld, indexReadingNew, account);
-//		
-//		return result;
+		Course yourCourse = SystemBackend.getCourse(indexReadingOld);
+		Course otherStudentCourse = SystemBackend.getCourse(indexReadingNew);
+		if ((yourCourse == null ) || (otherStudentCourse == null)) {
+			result = "Error. Please enter a valid index";
+			return result;
+		} else if (!yourCourse.getCourseCode().equalsIgnoreCase(otherStudentCourse.getCourseCode())) {
+			result = "Courses are not the same! Please enter the correct indexes";
+			return result;
+		}
+
+		// drop old index		
+		dropCourse(indexReadingOld, account);
+		
+		// check for timing clash with new index
+		ArrayList<Integer> TimeTable = account.getListCoursesRegistered();
+		boolean yourClash = SystemBackend.checkTimingClashes(TimeTable, indexReadingNew);
+		
+		// add back either old index or new index
+		if (!yourClash) {
+			addCourse(indexReadingNew, account);
+			result = "Index succesfully changed";
+		} else {
+			addCourse(indexReadingOld, account);
+			result = "Timing clash, index not changed";
+		}
+		
+		return result;
 	}
 
 	public static String getCoursesRegistered(StudentAccount account) {
@@ -161,7 +162,7 @@ public class UserMgr {
 			result = "Error. Please ensure that both swappeers takes the specified index";
 		}
 		
-		// Retreive intermediate timetable (all indexes except the ones to be swap)
+		// Retrieve intermediate timetable (all indexes except the ones to be swap)
 		ArrayList<Integer> yourTimeTable = yourAccount.filterListCoursesRegistered(yourIndex); // Still includes all index
 		ArrayList<Integer> otherTimeTable = otherAccount.filterListCoursesRegistered(otherIndex); // STill includes all index
 

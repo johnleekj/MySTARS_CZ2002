@@ -66,7 +66,7 @@ public class MainScreen {
 					System.out.println("Updating changes to databases...");
 					System.out.println("Thank you for using mySTARS!");
 					// Perform saving of file here.
-					FileMgr.saveAll();
+//					FileMgr.saveAll();
 					System.out.println("Done!");
 					System.out.println("Quiting mySTARS now...");
 					quit = true;

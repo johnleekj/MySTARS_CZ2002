@@ -32,22 +32,22 @@ public class SystemMgr {
 	}
 	/**
 	 * SystemBackend class is accessible
-	 * @return
-	 * @throws ParseException
+	 * @return return
+	 * @throws ParseException exception
 	 */
 	public static boolean getAccess() throws ParseException {
 		return SystemBackend.isAccessible();
 	}
 	/**
 	 * Gets access date for MySTARS from SystemBackend class
-	 * @return
+	 * @return return
 	 */
 	public static String getAccessDate() {
 		return SystemBackend.getAccessDate();
 	}
 	/**
 	 * Gets course list from SystemBackend class
-	 * @return
+	 * @return return
 	 */
 	public static String getGeneralCourseList() {
 		return SystemBackend.getGeneralCourseList();

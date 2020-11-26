@@ -38,7 +38,7 @@ public class StudentInformation extends PersonInformation {
 	/**
 	 * Change the matriculation number for the current student.
 	 * 
-	 * @param gender The updated matriculation number
+	 * @param matricNo The updated matriculation number
 	 */
 	public void setMatricNo(String matricNo) {
 		this.matricNo = matricNo;
@@ -52,7 +52,7 @@ public class StudentInformation extends PersonInformation {
 	 * @param gender Gender of student 
 	 * @param nationality Nationality of student
 	 * @param matricNo Matriculation number of student
-	 * @return
+	 * @return return StudentInformation
 	 */
 	public static StudentInformation makeStudentInformation	(
 			String name,

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"MySTARS","l":"com.mySTARS.Boundary"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.mySTARS.Boundary"},{"l":"com.mySTARS.Control"},{"l":"com.mySTARS.Entities"},{"l":"com.mySTARS.ENUMS"}]

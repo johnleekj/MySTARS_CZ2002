@@ -15,7 +15,7 @@ public class MainScreen {
 	public static Scanner scanner = new Scanner(System.in);
 	/**
 	 * Run the program
-	 * @param args
+	 * @param args main method
 	 */
 	public static void main(String[] args) {
 		/*

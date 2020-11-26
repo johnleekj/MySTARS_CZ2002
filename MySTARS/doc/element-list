@@ -1,2 +1,4 @@
-module:MySTARS
 com.mySTARS.Boundary
+com.mySTARS.Control
+com.mySTARS.Entities
+com.mySTARS.ENUMS

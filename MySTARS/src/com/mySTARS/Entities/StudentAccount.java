@@ -25,7 +25,7 @@ public class StudentAccount extends Account {
 	 * Also holds information on the courses that they students are registering for or those already taken.
 	 * 
 	 * @param loginID The username used to access an account that is registered under MySTARS
-	 * @param hashedPassword The password that is tagged respectively under the respective account.
+	 * @param password The password that is tagged respectively under the respective account.
 	 * @param email The email address that is tagged respectively under the respective account
 	 * @param studentInfo contains the studentInfo object. 
 	 * @param coursesRegistered A list of course registered
@@ -97,7 +97,7 @@ public class StudentAccount extends Account {
 	/**
 	 * Sets the current account with an updated set of student information
 	 * 
-	 * @param studentInfo
+	 * @param studentInfo student details
 	 */
 	public void setStudentInfo(StudentInformation studentInfo) {
 		this.studentInfo = studentInfo;
@@ -117,7 +117,7 @@ public class StudentAccount extends Account {
 	 * Returns the list of registered courses for current student excluding the index specified 
 	 * 
 	 * @param index the index to be excluded.
-	 * @return
+	 * @return integer list
 	 */
 	public ArrayList<Integer> filterListCoursesRegistered(int index) {
 		ArrayList<Integer> resultList = new ArrayList<Integer>();
@@ -134,7 +134,7 @@ public class StudentAccount extends Account {
 	 * Drop index from list of registered courses
 	 * 
 	 * @param droppingIndex Index that will be dropped.
-	 * @return
+	 * @return return integer if successful
 	 */
 	public int dropFromCoursesRegistered(int droppingIndex) {
 		for (int i = 0 ; i < this.coursesRegisteredList.size() ; i++) {
@@ -149,8 +149,8 @@ public class StudentAccount extends Account {
 	/**
 	 * Get course index from list. Returns -1 if course index does not exist
 	 * 
-	 * @param index_in
-	 * @return
+	 * @param index_in index of course
+	 * @return return integer
 	 */
 	public int getCourseFromLists(int index_in) {
 		for (int index : this.courseOnWaitList) {
@@ -176,11 +176,10 @@ public class StudentAccount extends Account {
 		return courseHistoryList;
 	}
 
+	
 	/**
 	 * Sets the list of courses previously taken.
-	 * 
-	 * @params courseHistory courses previously taken.
-	 *
+	 * @param courseHistory courses previously taken.
 	 */
 	public void setCourseHistory(ArrayList<Integer> courseHistory) {
 		this.courseHistoryList = courseHistory;
@@ -213,7 +212,7 @@ public class StudentAccount extends Account {
 	 * Add index to wait list. Return false if the course is already taken, registered, or on the waitlist.
 	 * 
 	 * @param index_in index of course to be added
-	 * @return
+	 * @return return boolean if adding to waitlist is successful
 	 */
 	public boolean addToWaitList(int index_in) {
 		// Important since this class do not know of timing, it will be checked before this method is called
@@ -235,7 +234,7 @@ public class StudentAccount extends Account {
 	 * Check if the student is currently registered for a current index.
 	 * 
 	 * @param index index of course to be checked
-	 * 	 * @return boolean on if student is currently taking the course.
+	 * @return boolean on if student is currently taking the course.
 	 */
 	public boolean isTakingCourse(int index) {
 		for (Integer i : this.getListCoursesRegistered()) {
@@ -251,7 +250,7 @@ public class StudentAccount extends Account {
 	 * Takes in all required parameters and return a full StudentAcount.
 	 * 
 	 * 
-	 * @param loginID The username used to access an account that is registered under MySTARS
+	 * @param login The username used to access an account that is registered under MySTARS
 	 * @param password The password that is tagged respectively under the respective account.
 	 * @param email The email address that is tagged respectively under the respective account
 	 * @param name Name of student

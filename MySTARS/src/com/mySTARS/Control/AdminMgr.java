@@ -17,8 +17,16 @@ import com.mySTARS.Entities.SystemBackend;
 public class AdminMgr {
 
 	/**
-	* @param (addStudentAccounts) (Calls StudentAccount class to carry out implementation of adding students
-	*/
+	 * 
+	 * @param adminAccount admin account
+	 * @param login login
+	 * @param password password
+	 * @param email email
+	 * @param name name
+	 * @param gender gender
+	 * @param nationality nationality
+	 * @param matricNo matriculation number
+	 */
 	public static void addStudentAccounts(
 			Account adminAccount,
 			String login,
@@ -101,13 +109,14 @@ public class AdminMgr {
 	public static void enterUpdateScreen(StaffAccount staffAcc) {
 		/*
 		* Brings admin to changes menu if admin chooses to update course, option 4 of admin display screen
+		*
 		*/
 		UpdateCourseScreen.enterUpdateScreen(staffAcc);
 	}
 	/**
 	 * Checks against SystemBackend if the login done by user is valid
 	 * @param login login by the user
-	 * @return
+	 * @return return
 	 */
 	public static boolean ifLoginClash(String login) {
 		/*
@@ -154,7 +163,7 @@ public class AdminMgr {
 	}
 	/**
 	 * Gets list of students from database in SystemBackend class, based on course
-	 * @param courseNameFilter
+	 * @param courseNameFilter courseNameFilter details
 	 * @return List of students by course name
 	 */
 	public static String getStudentList(String courseNameFilter) {

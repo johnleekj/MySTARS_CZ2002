@@ -438,7 +438,7 @@ public class SystemBackend {
 	 * Method to check if MySTARS should be allowed to be accessible to students at current time, according to gregorian calendar
 	 * 
 	 * @return Returns boolean value true / false
-	 * @throws ParseException 
+	 * @throws ParseException Catches exception
 	 */
 	public static boolean isAccessible() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
@@ -526,8 +526,9 @@ public class SystemBackend {
 		return false;
 	}
 	/**
-	 * add a course into the backend data
-	 * @param newCourse
+	 * Method to add a course
+	 * 
+	 * @param newCourse Holds new course
 	 */
 	public static void addCourse(Course newCourse) {
 		CourseMap.put(newCourse.getCourseCode().toUpperCase(), newCourse);
@@ -541,7 +542,7 @@ public class SystemBackend {
 	 * 
 	 * @param oldCourseCode Holds old course code
 	 * @param updatedCourseCode Holds updated course code
-	 * @return 
+	 * @return Returns the updated course code
 	 */
 	public static String updateCourseCode(String oldCourseCode, String updatedCourseCode) {
 		// check if name already exists
@@ -804,7 +805,7 @@ public class SystemBackend {
 	 * 
 	 * @param currentIndexDetail Holds current lesson details
 	 * @param newIndexDetail Holds new lesson details
-	 * @return
+	 * @return Returns boolean value true / false
 	 */
 	public static boolean checkTimingClashes(ArrayList<IndexDetail> currentIndexDetail, IndexDetail newIndexDetail) {
 		

@@ -20,7 +20,7 @@ import com.mySTARS.Entities.StudentInformation;
 import com.mySTARS.Entities.SystemBackend;
 /**
  * Serialization manager to handle serialization and deserialization of data
- * @author user
+ * 
  *
  */
 public class SerializationMgr {
@@ -74,8 +74,8 @@ public class SerializationMgr {
 	}
 	/**
 	 * Serialization of data from hashmaps into filenames
-	 * @param mapsave hashmap to be de-serialized
 	 * @param filename name of de-serialized file
+	 * @return returns serialised data
 	 */
 	public static HashMap deserializeMap(String filename) {
 		/*
